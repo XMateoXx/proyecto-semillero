@@ -2,19 +2,44 @@
 <h1 mat-dialog-title>{{inputdata.title}}</h1>
 <div mat-dialog-content>
    <mat-form-field>
-    <mat-label>Nombre</mat-label>
-    <input formControlName="name" matInput>
+    <mat-label>Usuario</mat-label>
+    <input formControlName="usuario" matInput>
    </mat-form-field>
    <mat-form-field>
-    <mat-label>Correo</mat-label>
-    <input matInput formControlName="email">
+    <mat-label>Contraseña</mat-label>
+    <input formControlName="contrasena" matInput>
    </mat-form-field>
    <mat-form-field>
-    <mat-label>Telefono</mat-label>
-    <input matInput formControlName="phone">
+    <mat-label>Nombres</mat-label>
+    <input formControlName="nombres" matInput>
+   </mat-form-field>
+   <mat-form-field>
+    <mat-label>Primer Apellido</mat-label>
+    <input formControlName="apellido1" matInput>
+   </mat-form-field>
+   <mat-form-field>
+    <mat-label>Segundo Apellido</mat-label>
+    <input formControlName="apellido2" matInput>
+   </mat-form-field>
+
+   <mat-form-field>
+    <mat-label>Tipo de Documento</mat-label>
+    <mat-select>
+      <mat-option value="CC">Cedula</mat-option>
+      <mat-option value="pasaporte">Pasaporte</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+   <mat-form-field>
+    <mat-label>Identificación</mat-label>
+    <input matInput formControlName="identificacion">
+   </mat-form-field>
+   <mat-form-field>
+    <mat-label>Teléfono</mat-label>
+    <input matInput formControlName="telefono">
    </mat-form-field>
    <div>
-    <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+    <mat-checkbox formControlName="estado">Is Active</mat-checkbox>
    </div>
 </div>
 <div mat-dialog-actions>
