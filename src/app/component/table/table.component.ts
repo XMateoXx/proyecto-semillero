@@ -49,8 +49,8 @@ export class TableComponent {
 
   
 
-  addcustomer(){
-    this.Openpopup(0, 'Add Customer',PopupComponent);
+  agregarusuario(){
+    this.Openpopup(0, 'Registro Usuario',PopupComponent);
   }
 
   Openpopup(code: any, title: any,component:any) {

@@ -1,46 +1,54 @@
 <form [formGroup]="myform" (ngSubmit)="Saveuser()">
 <h1 mat-dialog-title>{{inputdata.title}}</h1>
 <div mat-dialog-content>
-   <mat-form-field>
-    <mat-label>Usuario</mat-label>
-    <input formControlName="usuario" matInput>
-   </mat-form-field>
-   <mat-form-field>
+   <div class="form-group">
+    <label>Usuario</label>
+    <input formControlName="username" matInput>
+   </div>
+<!--    <mat-form-field>
     <mat-label>Contraseña</mat-label>
     <input formControlName="contrasena" matInput>
-   </mat-form-field>
-   <mat-form-field>
-    <mat-label>Nombres</mat-label>
+   </mat-form-field> -->
+
+   <div class="form-group">
+    <label>Contraseña</label>
+    <input matInput formControlName="contrasena" [type]="'password'">
+    <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button> -->
+  </div>
+
+
+   <div class="form-group">
+    <label>Nombres</label>
     <input formControlName="nombres" matInput>
-   </mat-form-field>
-   <mat-form-field>
+   </div>
+   <div class="form-group">
     <mat-label>Primer Apellido</mat-label>
     <input formControlName="apellido1" matInput>
-   </mat-form-field>
-   <mat-form-field>
+   </div>
+   <div class="form-group">
     <mat-label>Segundo Apellido</mat-label>
     <input formControlName="apellido2" matInput>
-   </mat-form-field>
+   </div>
 
-   <mat-form-field>
+   <div class="form-group">
     <mat-label>Tipo de Documento</mat-label>
-    <mat-select>
-      <mat-option value="CC">Cedula</mat-option>
-      <mat-option value="pasaporte">Pasaporte</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <select formControlName="tipodocumento">
+      <option value="CC">Cédula</option>
+      <option value="pasaporte">Pasaporte</option>
+    </select>
+  </div>
 
-   <mat-form-field>
+   <div class="form-group">
     <mat-label>Identificación</mat-label>
     <input matInput formControlName="identificacion">
-   </mat-form-field>
-   <mat-form-field>
+   </div>
+   <div class="form-group">
     <mat-label>Teléfono</mat-label>
     <input matInput formControlName="telefono">
-   </mat-form-field>
-   <div>
-    <mat-checkbox formControlName="estado">Is Active</mat-checkbox>
    </div>
+
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button type="submit" color="primary">Guardar</button>
