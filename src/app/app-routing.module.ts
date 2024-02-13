@@ -10,13 +10,13 @@ import { RegisterComponent } from './component/register/register.component';
 
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
+  {path:'',redirectTo: '/login', pathMatch: 'full'},
   {path:'card',component:CardComponent},
   {path:'table',component:TableComponent},
   {path:'login',component:LoginComponent, data: {title: "Inicio de sessión"}},
   {path:'menubar',component:MenubarComponent},
   {path:'register',component:RegisterComponent},
-  { path: '**', redirectTo: 'register' }
+  { path: '**', redirectTo: '/login' }
   
 
 ];

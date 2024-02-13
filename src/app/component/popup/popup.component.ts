@@ -1,5 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MasterService } from 'src/app/service/master.service';
 import { ToastService } from 'src/app/service/toast.service';
@@ -10,6 +16,7 @@ import { ToastService } from 'src/app/service/toast.service';
   styleUrls: ['./popup.component.css'],
 })
 export class PopupComponent implements OnInit {
+  submit = false;
   hide = true;
   inputdata: any;
   editdata: any;
@@ -39,7 +46,7 @@ export class PopupComponent implements OnInit {
         apellido2: this.editdata.apellido2,
         tipodocumento: this.editdata.tipodocumento,
         identificacion: this.editdata.identificacion,
-        telefono: this.editdata.telefono
+        telefono: this.editdata.telefono,
       });
     });
   }
@@ -49,27 +56,48 @@ export class PopupComponent implements OnInit {
   }
 
   myform = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    contrasena: new FormControl('', [Validators.required]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(20),
+    ]),
+    contrasena: new FormControl('', [Validators.required,             Validators.minLength(6),
+      Validators.maxLength(40)]),
     nombres: new FormControl('', [Validators.required]),
     apellido1: new FormControl('', [Validators.required]),
     apellido2: new FormControl('', [Validators.required]),
     tipodocumento: new FormControl('', [Validators.required]),
     identificacion: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required])
+    telefono: new FormControl('', [Validators.required]),
   });
 
+  /*   para acceder a los controles del formulario (form.controls) de la plantilla. 
+  Por ejemplo, podemos conseguir username campo en la plantilla 
+  usando f.username en lugar de form.controls.username. */
+  get f(): { [key: string]: AbstractControl } {
+    return this.myform.controls;
+  }
   Saveuser() {
+    this.submit = true;
     this.service.Savecustomer(this.myform.value).subscribe({
       next: (response) => {
-         //TODO implementar Toast 
-         this._servicioToast.mostrarExito("Registrado correctamente.", 'Aprobado', 1000);
-        },
-        error: (response) => {
-          //TODO implementar Toast 
-          console.log("Error al registrar.");
-          this._servicioToast.mostrarError('Error al registrar.','Error', 1000);
-      }
+        //TODO implementar Toast
+        this._servicioToast.mostrarExito(
+          'Registrado correctamente.',
+          'Aprobado',
+          1000
+        );
+        this.resertForm();
+      },
+      error: (response) => {
+        //TODO implementar Toast
+        console.log('Error al registrar.');
+        this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
+      },
     });
+  }
+  resertForm() {
+    this.submit = false;
+    this.myform.reset();
   }
 }
