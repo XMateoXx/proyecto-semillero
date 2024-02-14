@@ -4,3 +4,17 @@
     text-align: left;
     float: left;
 }
+
+img {
+    height: 500px;
+    width: 500px;
+}
+.content{
+    background-color: white;
+}
+.imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

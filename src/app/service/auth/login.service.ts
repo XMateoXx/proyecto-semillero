@@ -9,14 +9,16 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginService {
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<Users> =new BehaviorSubject<Users>({id:0, username:'', email:''});
+  currentUserData: BehaviorSubject<Users> =new BehaviorSubject<Users>({id:0, usuario:''});
   constructor(private http: HttpClient) { }
 
   login (credentials:LoginRequest):Observable<Users>{
-      return this.http.get<Users>('././assets/data.json').pipe(
+      console.log(credentials);
+      return this.http.post<Users>('http://127.0.0.1:8000/login', credentials).pipe(
         tap( (userData: Users) => {
           this.currentUserData.next(userData);
           this.currentUserLoginOn.next(true);
+      
         }),
         catchError(this.handleError)
       );
@@ -37,5 +39,19 @@ export class LoginService {
 
   get userLoginOn(): Observable<boolean>{
     return this.currentUserLoginOn.asObservable();
+  }
+  
+  public setJWT(data:any){
+    localStorage.setItem("jwt",JSON.stringify(data['access_token']['access_token']));
+  }
+
+  public getJWT(){
+    return JSON.parse(localStorage.getItem("jwt")!);
+  }
+
+  public clearJWT(){
+    this.currentUserLoginOn.unsubscribe();
+    this.currentUserData.unsubscribe();
+    localStorage.clear();
   }
 }

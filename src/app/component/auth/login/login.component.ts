@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/service/auth/login.service';
 import { LoginRequest } from 'src/app/service/auth/login-request';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,14 @@ import { LoginRequest } from 'src/app/service/auth/login-request';
 export class LoginComponent implements OnInit{
   loginError:string="";
   loginForm=this.formBuilder.group({
-    username:['usuario',[Validators.required]],
-    password: ['',Validators.required],
+    usuario:['',[Validators.required]],
+    contrasena: ['',Validators.required],
   })
 
-  constructor(private router: Router, private titleService: Title, private formBuilder:FormBuilder, private loginServices: LoginService) {
-    this.titleService.setTitle("Inicio de session");
+  constructor(private router: Router, private titleService: Title, private formBuilder:FormBuilder, private loginServices: LoginService, private _toastServices: ToastService) {
+    this.titleService.setTitle("Ingresar al Sistema");
+    const isLoggin = sessionStorage.getItem('jwt');
+    if (isLoggin) this.router.navigate(['/principal']);
   }
   ngOnInit(): void{
     
@@ -35,12 +38,12 @@ export class LoginComponent implements OnInit{
   } */
 
   get username(){
-    return this.loginForm.controls.username;
+    return this.loginForm.controls.usuario;
   }
 
   get password()
   {
-    return this.loginForm.controls.password;
+    return this.loginForm.controls.contrasena;
   }
 
   login(){
@@ -48,21 +51,23 @@ export class LoginComponent implements OnInit{
       this.loginError="";
       this.loginServices.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response) => {
+          this.loginServices.setJWT(response);
           console.log(response);
-
+          this._toastServices.mostrarExito("Bienvenido", "Exito", 2000)
           console.info("Login completo");
-          this.router.navigateByUrl('/card');
+          this.router.navigateByUrl('/principal');
           this.loginForm.reset();
         },
         error: async (errorData) => {
           console.error(errorData);
+          this._toastServices.mostrarError("Error al ingresar", "Error", 2000);
           this.loginError=errorData;
         }
       })
     }
     else {
       this.loginForm.markAllAsTouched();
-      alert("Error al ingresar los datos.");
+      this._toastServices.mostrarError("Llene los campos correspondientes", "Error", 5000);
     }
   }
   

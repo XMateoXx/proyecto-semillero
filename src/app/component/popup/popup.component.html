@@ -3,13 +3,13 @@
 <div mat-dialog-content>
    <div class="form-group">
     <label>Usuario</label>
-    <input formControlName="username" matInput>
-    <div *ngIf="submit && f['username'].errors" class="invalid-feedback">
-      <div *ngIf="f['username'].errors['required']">El usuario es requerido.</div>
-      <div *ngIf="f['username'].errors['minlength']">
+    <input type="email" formControlName="usuario" matInput>
+    <div *ngIf="submit && f['usuario'].errors" class="invalid-feedback">
+      <div *ngIf="f['usuario'].errors['required']">El usuario es requerido.</div>
+      <div *ngIf="f['usuario'].errors['minlength']">
         El usuario debe tener más de 6 caracteres.
       </div>
-      <div *ngIf="f['username'].errors['maxlength']">
+      <div *ngIf="f['usuario'].errors['maxlength']">
         el usuario debe tener menos de 20 caracteres.
       </div>
     </div>
@@ -83,6 +83,13 @@
     <input matInput formControlName="telefono">
     <div *ngIf="submit && f['telefono'].errors" class="invalid-feedback">
       <div *ngIf="f['telefono'].errors['required']">El campo telefono es requerido</div>
+    </div>
+   </div>
+   <div class="form-group">
+    <mat-label>Id del perfil</mat-label>
+    <input matInput formControlName="idperfil">
+    <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
+      <div *ngIf="f['idperfil'].errors['required']">El campo id del perfil es requerido</div>
     </div>
    </div>
 

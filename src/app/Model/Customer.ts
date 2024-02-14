@@ -1,10 +1,16 @@
 export interface Customer {
     id: string;
-    name: string;
-    email: string;
-    phone: string;
-    active: string
+    usuario: string;
+    contrasena: string;
+    nombres: string;
+    apellido1: string;
+    apellido2: string;
+    tipodocumento: string;
+    identificacion: string;
+    telefono: string;
+    idperfil: number;
 }
+
 
 export interface Country{
     code:string,

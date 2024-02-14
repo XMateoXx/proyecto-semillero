@@ -8,7 +8,7 @@ export class ToastService {
 
   constructor(private toastr: ToastrService) { }
 
-  mostrarExito(mensaje: string, titulo: "Aprobado", duracion: number){
+  mostrarExito(mensaje: string, titulo:string, duracion: number){
     this.toastr.success(mensaje, titulo,{
       timeOut: duracion
     });

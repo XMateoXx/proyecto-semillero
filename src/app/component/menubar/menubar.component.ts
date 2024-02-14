@@ -40,4 +40,10 @@ export class MenubarComponent implements OnInit, OnDestroy{
     })
 
   }
+
+  cerrarIngreso(){
+    this.router.navigateByUrl('/login');
+    this.ngOnDestroy();
+    this.loginService.clearJWT();
+  }
 }

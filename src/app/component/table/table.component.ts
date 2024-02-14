@@ -7,26 +7,40 @@ import { Customer } from 'src/app/Model/Customer';
 import { MasterService } from 'src/app/service/master.service';
 import { PopupComponent } from '../popup/popup.component';
 import { UserdetailComponent } from '../userdetail/userdetail.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
-
-  customerlist !: Customer[];
+  customerlist!: Customer[];
   dataSource: any;
-  displayedColumns: string[] = ["code", "name", "email", "phone", "status", "action"];
-  @ViewChild(MatPaginator) paginatior !: MatPaginator;
-  @ViewChild(MatSort) sort !: MatSort;
 
-  constructor(private service: MasterService, private dialog: MatDialog) {
+  displayedColumns: string[] = [
+    'id',
+    'usuario',
+    'contrasena',
+    'nombres',
+    'apellido1',
+    'apellido2',
+    'tipodocumento',
+    'identificacion',
+    'telefono',
+    'idperfil',
+    'action'
+  ];
+  @ViewChild(MatPaginator) paginatior!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private service: MasterService, private dialog: MatDialog, private titleService: Title) {
     this.loadcustomer();
+    titleService.setTitle("Modulo de Usuario")
   }
 
   loadcustomer() {
-    this.service.GetCustomer().subscribe(res => {
+    this.service.GetCustomer().subscribe((res) => {
       this.customerlist = res;
       this.dataSource = new MatTableDataSource<Customer>(this.customerlist);
       this.dataSource.paginator = this.paginatior;
@@ -40,33 +54,30 @@ export class TableComponent {
   }
 
   editcustomer(code: any) {
-    this.Openpopup(code, 'Edit Customer',PopupComponent);
+    this.Openpopup(code, 'Edit Customer', PopupComponent);
   }
 
   detailcustomer(code: any) {
-    this.Openpopup(code, 'Customer Detail',UserdetailComponent);
+    this.Openpopup(code, 'Customer Detail', UserdetailComponent);
   }
 
-  
-
-  agregarusuario(){
-    this.Openpopup(0, 'Registro Usuario',PopupComponent);
+  agregarusuario() {
+    this.Openpopup(0, 'Registro Usuario', PopupComponent);
   }
 
-  Openpopup(code: any, title: any,component:any) {
+  Openpopup(code: any, title: any, component: any) {
     var _popup = this.dialog.open(component, {
       width: '40%',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
       data: {
         title: title,
-        code: code
-      }
+        code: code,
+      },
     });
-    _popup.afterClosed().subscribe(item => {
+    _popup.afterClosed().subscribe((item) => {
       // console.log(item)
       this.loadcustomer();
-    })
+    });
   }
-
 }

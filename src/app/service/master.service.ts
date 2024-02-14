@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { colorentity } from '../Entity/colorentity';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Country, Customer } from '../Model/Customer';
+import { LoginService } from './auth/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MasterService {
-
-  constructor(private http: HttpClient) { }
+  private _baseURL = "http://localhost:8000";
+  constructor(private http: HttpClient, private _loginService: LoginService) { }
 
   GetColorList(): colorentity[] {
     return [
@@ -22,30 +23,36 @@ export class MasterService {
   }
 
   GetCustomer():Observable<Customer[]>{
-    return this.http.get<Customer[]>("http://localhost:3000/customer");
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    return this.http.get<Customer[]>(`${this._baseURL}/obtener_usuarios`, {headers});
   }
 
   Savecustomer(data:any){
-    console.log(data)
-    return this.http.post("http://localhost:3000/customer",data);
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    return this.http.post(`${this._baseURL}/crear_usuario`,data, {headers});
   }
 
   GetCustomerbycode(code:any){
-    return this.http.get("http://localhost:3000/customer/"+code);
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    return this.http.get(`${this._baseURL}/obtener_usuario/`+code, {headers});
   }
 
+  actualizarUsuario(usuario: Customer){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    return this.http.put(`${this._baseURL}/actualizar_usuario`,usuario, {headers});
+  }
   GetAssociate(){
-    return this.http.get('http://localhost:3000/associate');
+    return this.http.get(`${this._baseURL}/associate`);
   }
   GetAssociatebycode(code:any){
-    return this.http.get('http://localhost:3000/associate/'+code);
+    return this.http.get(`${this._baseURL}/associate/`+code);
   }
   GetCountry():Observable<Country[]>{
-    return this.http.get<Country[]>('http://localhost:3000/country');
+    return this.http.get<Country[]>(`${this._baseURL}/country`);
   }
 
   SaveAssociate(data:any,code:any){
-    return this.http.put('http://localhost:3000/associate/'+code,data);
+    return this.http.put(`${this._baseURL}/associate/`+code,data);
   }
 
 }

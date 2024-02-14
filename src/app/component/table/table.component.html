@@ -13,38 +13,58 @@
   
   <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
-      <ng-container matColumnDef="code">
+      <ng-container matColumnDef="id">
         <th mat-sort-header mat-header-cell *matHeaderCellDef> ID</th>
         <td mat-cell *matCellDef="let element">{{element.id}}</td>
       </ng-container>
   
-      <ng-container matColumnDef="name">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombre</th>
-          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      <ng-container matColumnDef="usuario">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef> Usuario</th>
+          <td mat-cell *matCellDef="let element">{{element.usuario}}</td>
         </ng-container>
   
-        <ng-container matColumnDef="email">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Correo</th>
-          <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        <ng-container matColumnDef="contrasena">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Contraseña</th>
+          <td mat-cell *matCellDef="let element">{{element.contrasena}}</td>
         </ng-container>
   
-        <ng-container matColumnDef="phone">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef> Telefono</th>
-          <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+        <ng-container matColumnDef="nombres">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombres</th>
+          <td mat-cell *matCellDef="let element">{{element.nombres}}</td>
         </ng-container>
   
-        <ng-container matColumnDef="status">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Estado</th>
-          <td mat-cell *matCellDef="let element">{{element.status}}</td>
+        <ng-container matColumnDef="apellido1">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Primer Apellido</th>
+          <td mat-cell *matCellDef="let element">{{element.apellido1}}</td>
+        </ng-container>
+        <ng-container matColumnDef="apellido2">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Segundo Apellido</th>
+          <td mat-cell *matCellDef="let element">{{element.apellido2}}</td>
+        </ng-container>
+        <ng-container matColumnDef="tipodocumento">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Tipo de Documento</th>
+          <td mat-cell *matCellDef="let element">{{element.tipodocumento}}</td>
+        </ng-container>
+        <ng-container matColumnDef="identificacion">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Identificacion</th>
+          <td mat-cell *matCellDef="let element">{{element.identificacion}}</td>
+        </ng-container>
+        <ng-container matColumnDef="telefono">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Telefono</th>
+          <td mat-cell *matCellDef="let element">{{element.telefono}}</td>
+        </ng-container>
+        <ng-container matColumnDef="idperfil">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>ID Perfil</th>
+          <td mat-cell *matCellDef="let element">{{element.idperfil}}</td>
         </ng-container>
   
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef> Action</th>
           <td mat-cell *matCellDef="let element">
   
-              <button (click)="editcustomer(element.id)" mat-raised-button color="primary">Edit</button>
-              <button mat-raised-button color="warn">Delete</button>
-              <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button>
+              <button (click)="editcustomer(element.id)" mat-raised-button color="primary"><mat-icon>edit</mat-icon>Edit</button>
+              <button mat-raised-button color="warn">	<mat-icon>delete</mat-icon>Delete</button>
+<!--               <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
           </td>
         </ng-container>
   

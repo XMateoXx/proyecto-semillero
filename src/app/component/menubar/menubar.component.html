@@ -2,43 +2,39 @@
   <button (click)="drawer.toggle()" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <span>PROYECTO</span>
+  <span>MENÚ</span>
   <span class="example-spacer"></span>
-  <button routerLink="" mat-button>Home</button>
 
-  <a mat-raised-button color="warn" (click)="redirectToLogin()"
-    >Iniciar Sesión</a
-  >
-  <button (click)="badgevisibility()" mat-icon-button>
+<!--   
+  <button routerLink="" mat-button>Home</button>
+ -->
+  <a mat-raised-button color="warn" (click)="cerrarIngreso()"
+    >Cerrar Sesión</a>
+<!--   <button (click)="badgevisibility()" mat-icon-button>
     <mat-icon
       matBadgeColor="accent"
       matBadge="15"
       [matBadgeHidden]="badgevisible"
       matBadgeSize="small"
       >notifications</mat-icon
-    >
-  </button>
+    > 
+  </button>-->
 </mat-toolbar>
 <mat-drawer-container autosize>
   <mat-drawer #drawer opened="true" mode="side" position="start">
     <mat-nav-list>
       <mat-list-item>
-        <button routerLink="/card" mat-button>
+        <button routerLink="/principal" mat-button>
           <mat-icon>dashboard</mat-icon>Principal
         </button>
-      </mat-list-item>
-      <mat-list-item>
-        <button routerLink="" mat-button><mat-icon>home</mat-icon> Home</button>
       </mat-list-item>
 
       <mat-list-item>
         <button routerLink="/table" mat-button>
-          <mat-icon>table</mat-icon> Tablas
+          <mat-icon>table</mat-icon> Modulo de Usuario
         </button>
       </mat-list-item>
-      <mat-list-item>
-        <button mat-button><mat-icon>help</mat-icon>Ayuda</button>
-      </mat-list-item>
+
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
