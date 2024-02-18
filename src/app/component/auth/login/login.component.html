@@ -1,42 +1,55 @@
 <body>
-  <div class="login-container lg:flex lg:items-center lg:justify-between">
+  <div class="login-container rounded-xl bg-gray-800 bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
     <form [formGroup]="loginForm">
-      <div class="logo-container">
+      <div class="logo-container mb-8 flex flex-col items-center">
         <img
           src="../../../assets/img/culsinfondo.png"
           alt="Logo de la aplicación"
-          class="logo"
+          class=" logo"
         />
       </div>
       <h2>INGRESAR AL SISTEMA</h2>
       <div class="form-group">
         <label for="username">Usuario</label>
         <input
+        class="w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-black"
           formControlName="usuario"
           type="text"
           id="username"
           name="username"
           required
         />
-      </div>
+      
       <div
         *ngIf="username.invalid && (username.dirty || username.touched)"
         class="text-danger"
       >
-        <div *ngIf="username.errors?.['required']">El username es requerido.</div>
+        <div *ngIf="username.errors?.['required']">El usuario es requerido.</div>
       </div>
+    </div>
       <div class="form-group">
         <label for="password">Contraseña</label>
         <input
+        class ="w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-black"
           formControlName="contrasena"
           type="password"
           id="password"
           name="password"
           required
         />
-        <div *ngIf="password.errors?.['required']">El Password es requerido.</div>
+        <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="password.errors?.['required']">La contraseña es requerida.</div>
+        </div>
       </div>
-      <button type="submit" (click)="login()">Iniciar sesión</button>
+     
+      <button class="inline-flex items-center w-full px-5 py-3 mb-3 mr-1 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700" type="submit" (click)="login()">
+        Iniciar sesión
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+      </button>
       <br /><br />
       
     </form>

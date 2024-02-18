@@ -55,17 +55,17 @@ label {
   font-weight: bold;
   color: #070707; /* Cambia el color del texto según tu preferencia */
 }
-
+/* 
 input {
   width: 100%;
   padding: 12px;
   box-sizing: border-box;
-  border: 1px solid #000007af; /* Añade un borde para mejorar la apariencia */
-  border-radius: 5px;
+  border: 1px solid #000007af; */ /* Añade un borde para mejorar la apariencia */
+/*   border-radius: 5px;
   font-size: 16px;
-}
+} */
 
-button {
+/* button {
   width: 100%;
   padding: 12px;
   background-color: rgba(19, 5, 218, 0.849);
@@ -78,4 +78,4 @@ button {
 
 button:hover {
   background-color: #0c33b1; /* Cambia el color al pasar el ratón por encima según tu preferencia */
-}
+/* }  */
