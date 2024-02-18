@@ -57,13 +57,17 @@
           <th mat-sort-header mat-header-cell *matHeaderCellDef>ID Perfil</th>
           <td mat-cell *matCellDef="let element">{{element.idperfil}}</td>
         </ng-container>
+        <ng-container matColumnDef="estado">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">{{element.estado}}</td>
+        </ng-container>
   
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef> Action</th>
           <td mat-cell *matCellDef="let element">
   
-              <button (click)="editcustomer(element.id)" mat-raised-button color="primary"><mat-icon>edit</mat-icon>Edit</button>
-              <button mat-raised-button color="warn">	<mat-icon>delete</mat-icon>Delete</button>
+              <button (click)="editcustomer(element.id)" mat-raised-button color="primary"><mat-icon>edit</mat-icon></button>
+              <button (click)="eliminarUsuario(element.id)" mat-raised-button color="warn">	<mat-icon>delete</mat-icon></button>
 <!--               <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
           </td>
         </ng-container>

@@ -9,6 +9,7 @@ export interface Customer {
     identificacion: string;
     telefono: string;
     idperfil: number;
+    estado: string;
 }
 
 

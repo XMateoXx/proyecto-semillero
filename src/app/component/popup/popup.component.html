@@ -82,7 +82,7 @@
     <mat-label>Teléfono</mat-label>
     <input matInput formControlName="telefono">
     <div *ngIf="submit && f['telefono'].errors" class="invalid-feedback">
-      <div *ngIf="f['telefono'].errors['required']">El campo telefono es requerido</div>
+      <div *ngIf="f['telefono'].errors['required']">El campo teléfono es requerido</div>
     </div>
    </div>
    <div class="form-group">
@@ -90,6 +90,13 @@
     <input matInput formControlName="idperfil">
     <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
       <div *ngIf="f['idperfil'].errors['required']">El campo id del perfil es requerido</div>
+    </div>
+   </div>
+   <div class="form-group">
+    <mat-label>Estado</mat-label>
+    <input matInput formControlName="estado">
+    <div *ngIf="submit && f['estado'].errors" class="invalid-feedback">
+      <div *ngIf="f['estado'].errors['required']">El campo de estado es requerido</div>
     </div>
    </div>
 

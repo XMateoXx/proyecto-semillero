@@ -29,6 +29,7 @@ export class TableComponent {
     'identificacion',
     'telefono',
     'idperfil',
+    'estado',
     'action'
   ];
   @ViewChild(MatPaginator) paginatior!: MatPaginator;
@@ -41,6 +42,7 @@ export class TableComponent {
 
   loadcustomer() {
     this.service.GetCustomer().subscribe((res) => {
+      console.log(res)
       this.customerlist = res;
       this.dataSource = new MatTableDataSource<Customer>(this.customerlist);
       this.dataSource.paginator = this.paginatior;
@@ -54,11 +56,16 @@ export class TableComponent {
   }
 
   editcustomer(code: any) {
-    this.Openpopup(code, 'Edit Customer', PopupComponent);
+    this.Openpopup(code, 'Editar Usuario', PopupComponent);
   }
 
   detailcustomer(code: any) {
-    this.Openpopup(code, 'Customer Detail', UserdetailComponent);
+    this.Openpopup(code, 'Detalles del Usuario', UserdetailComponent);
+  }
+
+  eliminarUsuario(id:any) {
+    this.service.eliminarUsuario(id);
+    this.loadcustomer();
   }
 
   agregarusuario() {

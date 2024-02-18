@@ -23,24 +23,35 @@ export class MasterService {
   }
 
   GetCustomer():Observable<Customer[]>{
-    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    let headers = this.header_format();
     return this.http.get<Customer[]>(`${this._baseURL}/obtener_usuarios`, {headers});
   }
 
   Savecustomer(data:any){
-    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    let headers = this.header_format();
     return this.http.post(`${this._baseURL}/crear_usuario`,data, {headers});
   }
 
   GetCustomerbycode(code:any){
-    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    let headers = this.header_format();
     return this.http.get(`${this._baseURL}/obtener_usuario/`+code, {headers});
   }
 
   actualizarUsuario(usuario: Customer){
-    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT());
+    let headers = this.header_format();
     return this.http.put(`${this._baseURL}/actualizar_usuario`,usuario, {headers});
   }
+
+  eliminarUsuario(id: any){
+  
+    let headers = this.header_format();
+    return this.http.put(`${this._baseURL}/eliminar_usuario/`+id, {headers});
+  }
+
+  header_format(){
+    return new HttpHeaders().set('Authorization', 'Bearer ' + this._loginService.getJWT()['access_token']);
+  }
+
   GetAssociate(){
     return this.http.get(`${this._baseURL}/associate`);
   }

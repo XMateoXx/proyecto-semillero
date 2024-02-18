@@ -42,7 +42,7 @@ export class LoginService {
   }
   
   public setJWT(data:any){
-    localStorage.setItem("jwt",JSON.stringify(data['access_token']['access_token']));
+    localStorage.setItem("jwt",JSON.stringify(data));
   }
 
   public getJWT(){
