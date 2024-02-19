@@ -43,9 +43,8 @@ export class MasterService {
   }
 
   eliminarUsuario(id: any){
-  
     let headers = this.header_format();
-    return this.http.put(`${this._baseURL}/eliminar_usuario/`+id, {headers});
+    return this.http.put(`${this._baseURL}/eliminar_usuario/`+id,{"usuario_id": id} , {headers});
   }
 
   header_format(){

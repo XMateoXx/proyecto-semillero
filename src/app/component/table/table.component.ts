@@ -64,8 +64,12 @@ export class TableComponent {
   }
 
   eliminarUsuario(id:any) {
-    this.service.eliminarUsuario(id);
-    this.loadcustomer();
+    this.service.eliminarUsuario(id).subscribe((res) =>
+    {
+      this.loadcustomer();
+
+    } 
+    );
   }
 
   agregarusuario() {
