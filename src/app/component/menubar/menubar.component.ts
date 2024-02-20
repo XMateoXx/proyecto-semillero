@@ -1,18 +1,26 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { LoginService } from 'src/app/service/auth/login.service';
 import { Users } from 'src/app/service/auth/users';
 
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
-  styleUrls: ['./menubar.component.css']
+  styleUrls: ['./menubar.component.css'],
 })
-export class MenubarComponent implements OnInit, OnDestroy{
-  userLoginOn:boolean=false;
-  userData?:Users;
-  constructor(private router: Router, private loginService: LoginService) {}
+export class MenubarComponent implements OnInit, OnDestroy {
+  userLoginOn: boolean = false;
+  userData?: Users;
   badgevisible = false;
+  private unsubscribe$ = new Subject<void>();
+
+
+
+  constructor(private router: Router, private loginService: LoginService) {}
+  
+  
   badgevisibility() {
     this.badgevisible = true;
   }
@@ -22,28 +30,31 @@ export class MenubarComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.loginService.currentUserData.unsubscribe();
-    this.loginService.currentUserLoginOn.unsubscribe();
+
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   ngOnInit(): void {
-    this.loginService.currentUserLoginOn.subscribe({
-      next:(userLoginOn) => {
-        this.userLoginOn=userLoginOn;
-      }
-    });
- 
-    this.loginService.currentUserData.subscribe({
-      next:(userData)=>{
-        this.userData=userData;
-      }
-    })
+    this.loginService.currentUserLoginOn
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe({
+        next: (userLoginOn) => {
+          this.userLoginOn = userLoginOn;
+        }
+      });
 
+    this.loginService.currentUserData
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe({
+        next: (userData) => {
+          this.userData = userData;
+        }
+      });
   }
 
-  cerrarIngreso(){
+  cerrarIngreso() {
     this.router.navigateByUrl('/login');
-    this.ngOnDestroy();
     this.loginService.clearJWT();
   }
 }

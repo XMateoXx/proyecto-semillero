@@ -50,8 +50,8 @@ export class LoginService {
   }
 
   public clearJWT(){
-    this.currentUserLoginOn.unsubscribe();
-    this.currentUserData.unsubscribe();
+    this.currentUserLoginOn.next(false);
+    this.currentUserData.next({ id: 0, usuario: '' });
     localStorage.clear();
   }
 }

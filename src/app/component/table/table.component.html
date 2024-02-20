@@ -1,90 +1,120 @@
 <app-menubar>
   <mat-card>
-      <mat-card-header>
-    <mat-form-field>
-      <input matInput (keyup)="Filterchange($event)" placeholder="BUSCAR" />
-    </mat-form-field>
-    <button style="margin-left: 60%;" (click)="agregarusuario()" mat-raised-button color="primary">Añadir usuario(+)</button>
-  
-      </mat-card-header>
-      <mat-card-content>
-  
-      
-  
-  <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-      <ng-container matColumnDef="id">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef> ID</th>
-        <td mat-cell *matCellDef="let element">{{element.id}}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="usuario">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef> Usuario</th>
-          <td mat-cell *matCellDef="let element">{{element.usuario}}</td>
+    <mat-card-header>
+      <mat-form-field>
+        <input matInput (keyup)="Filterchange($event)" placeholder="BUSCAR" />
+      </mat-form-field>
+      <button
+        style="margin-left: 60%"
+        (click)="agregarusuario()"
+        mat-raised-button
+        color="primary"
+      >
+        Añadir usuario(+)
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <table
+        matSort
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8"
+      >
+        <ng-container matColumnDef="id">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
-  
+
+        <ng-container matColumnDef="usuario">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Usuario</th>
+          <td mat-cell *matCellDef="let element">{{ element.usuario }}</td>
+        </ng-container>
+
         <ng-container matColumnDef="contrasena">
           <th mat-sort-header mat-header-cell *matHeaderCellDef>Contraseña</th>
-          <td mat-cell *matCellDef="let element">{{element.contrasena}}</td>
+          <td mat-cell *matCellDef="let element">{{ element.contrasena }}</td>
         </ng-container>
-  
+
         <ng-container matColumnDef="nombres">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombres</th>
-          <td mat-cell *matCellDef="let element">{{element.nombres}}</td>
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Nombres</th>
+          <td mat-cell *matCellDef="let element">{{ element.nombres }}</td>
         </ng-container>
-  
+
         <ng-container matColumnDef="apellido1">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Primer Apellido</th>
-          <td mat-cell *matCellDef="let element">{{element.apellido1}}</td>
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>
+            Primer Apellido
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.apellido1 }}</td>
         </ng-container>
         <ng-container matColumnDef="apellido2">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Segundo Apellido</th>
-          <td mat-cell *matCellDef="let element">{{element.apellido2}}</td>
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>
+            Segundo Apellido
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.apellido2 }}</td>
         </ng-container>
         <ng-container matColumnDef="tipodocumento">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Tipo de Documento</th>
-          <td mat-cell *matCellDef="let element">{{element.tipodocumento}}</td>
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>
+            Tipo de Documento
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.tipodocumento }}
+          </td>
         </ng-container>
         <ng-container matColumnDef="identificacion">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Identificacion</th>
-          <td mat-cell *matCellDef="let element">{{element.identificacion}}</td>
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>
+            Identificacion
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.identificacion }}
+          </td>
         </ng-container>
         <ng-container matColumnDef="telefono">
           <th mat-sort-header mat-header-cell *matHeaderCellDef>Telefono</th>
-          <td mat-cell *matCellDef="let element">{{element.telefono}}</td>
+          <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
         </ng-container>
         <ng-container matColumnDef="idperfil">
           <th mat-sort-header mat-header-cell *matHeaderCellDef>ID Perfil</th>
-          <td mat-cell *matCellDef="let element">{{element.idperfil}}</td>
+          <td mat-cell *matCellDef="let element">{{ element.idperfil }}</td>
         </ng-container>
         <ng-container matColumnDef="estado">
-            <th mat-sort-header mat-header-cell *matHeaderCellDef>Estado</th>
-          <td mat-cell *matCellDef="let element">{{element.estado}}</td>
-        </ng-container>
-  
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef> Action</th>
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>Estado</th>
           <td mat-cell *matCellDef="let element">
-  
-              <button (click)="editcustomer(element.id)" mat-raised-button color="primary"><mat-icon>edit</mat-icon></button>
-              <button (click)="eliminarUsuario(element.id)" mat-raised-button color="warn">	<mat-icon>delete</mat-icon></button>
-<!--               <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
+            <ng-container *ngIf="element.estado === 1; else inactivoTemplate">
+              <span class="activo">Activo</span>
+            </ng-container>
+            <ng-template #inactivoTemplate>
+              <span class="inactivo">Inactivo</span>
+            </ng-template>
           </td>
         </ng-container>
-  
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
-  
-  </table>
-  
-  </mat-card-content>
-  <br>
-  <mat-card-footer>
-  
-      <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
-  
-  </mat-card-footer>
-  </mat-card>
 
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element" class="action">
+            <button
+              (click)="editcustomer(element.id)"
+              
+              color="primary"
+            ><mat-icon>edit</mat-icon></button>
+            <button
+              (click)="eliminarUsuario(element.id)"
+              
+              color="warn"
+            ><mat-icon>delete</mat-icon></button>
+            <!--               <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+    <br />
+    <mat-card-footer>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-footer>
+  </mat-card>
 </app-menubar>
