@@ -93,8 +93,14 @@
     </div>
    </div>
    <div class="form-group">
-    <mat-label>Estado</mat-label>
-    <input matInput formControlName="estado">
+    
+     <label>Estado</label>
+     <select formControlName="estado" required>
+       <option [value]="0">Inactivo</option>
+       <option [value]="1">Activo</option>
+      </select>
+      
+    
     <div *ngIf="submit && f['estado'].errors" class="invalid-feedback">
       <div *ngIf="f['estado'].errors['required']">El campo de estado es requerido</div>
     </div>
