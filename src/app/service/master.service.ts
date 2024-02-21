@@ -3,6 +3,7 @@ import { colorentity } from '../Entity/colorentity';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Country, Customer } from '../Model/Customer';
+import { Perfil } from '../Model/Perfil';
 import { LoginService } from './auth/login.service';
 
 @Injectable({
@@ -45,6 +46,11 @@ export class MasterService {
   eliminarUsuario(id: any){
     let headers = this.header_format();
     return this.http.put(`${this._baseURL}/eliminar_usuario/`+id,{"usuario_id": id} , {headers});
+  }
+
+  obtenerPerfiles():Observable<Perfil[]>{
+    let headers = this.header_format();
+    return this.http.get<Perfil[]>(`${this._baseURL}/obtener_perfils`, {headers});
   }
 
   header_format(){
