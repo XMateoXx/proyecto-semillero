@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/service/auth/login.service';
 import { LoginRequest } from 'src/app/service/auth/login-request';
 import { ToastService } from 'src/app/service/toast.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -52,9 +53,8 @@ export class LoginComponent implements OnInit{
       this.loginServices.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response) => {
           this.loginServices.setJWT(response);
-          console.log("currentData", this.loginServices.currentUserData.value);
-          let nombrecompleto = this.loginServices.currentUserData.value.nombre + " " + this.loginServices.currentUserData.value.apellido
-          this._toastServices.mostrarExito("Bienvenido "+nombrecompleto , "Exito", 2000)
+          let nombrecompleto = this.loginServices.currentUserData.value.nombre + " " + this.loginServices.currentUserData.value.apellido;
+          this._toastServices.mostrarExito("Bienvenido: "+nombrecompleto , "Exito", 2000);
           console.info("Login completo");
           this.router.navigateByUrl('/principal');
           this.loginForm.reset();
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit{
           this._toastServices.mostrarError("Error al ingresar", "Error", 2000);
           this.loginError=errorData;
         }
-      })
+      });
     }
     else {
       this.loginForm.markAllAsTouched();

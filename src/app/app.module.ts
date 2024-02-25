@@ -17,7 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './component/auth/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -40,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
