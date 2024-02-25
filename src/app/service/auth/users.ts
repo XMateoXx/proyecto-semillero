@@ -1,7 +1,8 @@
 export interface Users {
-    id:number;
-    name?:string;
-    lastName?:string;
+    user_id:number;
+    nombre?:string;
+    apellido?:string;
     message?:string;
-    usuario:string;
+    sub:string;
+    perfil?:number;
 }

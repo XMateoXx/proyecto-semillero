@@ -52,8 +52,9 @@ export class LoginComponent implements OnInit{
       this.loginServices.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response) => {
           this.loginServices.setJWT(response);
-          console.log(response);
-          this._toastServices.mostrarExito("Bienvenido", "Exito", 2000)
+          console.log("currentData", this.loginServices.currentUserData.value);
+          let nombrecompleto = this.loginServices.currentUserData.value.nombre + " " + this.loginServices.currentUserData.value.apellido
+          this._toastServices.mostrarExito("Bienvenido "+nombrecompleto , "Exito", 2000)
           console.info("Login completo");
           this.router.navigateByUrl('/principal');
           this.loginForm.reset();

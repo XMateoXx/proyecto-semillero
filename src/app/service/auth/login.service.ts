@@ -9,7 +9,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginService {
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<Users> =new BehaviorSubject<Users>({id:0, usuario:''});
+  currentUserData: BehaviorSubject<Users> =new BehaviorSubject<Users>({user_id:0, sub:''});
   constructor(private http: HttpClient) { }
 
   login (credentials:LoginRequest):Observable<Users>{
@@ -51,7 +51,7 @@ export class LoginService {
 
   public clearJWT(){
     this.currentUserLoginOn.next(false);
-    this.currentUserData.next({ id: 0, usuario: '' });
+    this.currentUserData.next({ user_id: 0, sub: '' });
     localStorage.clear();
   }
 }

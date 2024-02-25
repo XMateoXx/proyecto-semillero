@@ -10,18 +10,21 @@ export class ToastService {
 
   mostrarExito(mensaje: string, titulo:string, duracion: number){
     this.toastr.success(mensaje, titulo,{
-      timeOut: duracion
+      timeOut: duracion,
+      positionClass: 'toast-bottom-right'
     });
   }
   mostrarError(mensaje: string, titulo: "Error", duracion: number){
     this.toastr.error(mensaje, titulo,{
-      timeOut: duracion
+      timeOut: duracion,
+      positionClass: 'toast-bottom-right'
     });
   }
   
   mostrarInfo(mensaje: string, titulo: string, duracion: number){
     this.toastr.info(mensaje, titulo,{
-      timeOut: duracion
+      timeOut: duracion,
+      positionClass: 'toast-bottom-right'
     });
 
   }
