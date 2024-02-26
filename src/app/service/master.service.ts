@@ -48,6 +48,11 @@ export class MasterService {
     return this.http.put(`${this._baseURL}/eliminar_usuario/`+id,{"usuario_id": id} , {headers});
   }
 
+  activarUsuario(id: any){
+    let headers = this.header_format();
+    return this.http.put(`${this._baseURL}/activar_usuario/`+id,{"usuario_id": id} , {headers});
+  }
+
   obtenerPerfiles():Observable<Perfil[]>{
     let headers = this.header_format();
     return this.http.get<Perfil[]>(`${this._baseURL}/obtener_perfils`, {headers});

@@ -72,6 +72,15 @@ export class TableComponent {
     );
   }
 
+  activarUsuario(id:any) {
+    this.service.activarUsuario(id).subscribe((res) =>
+    {
+      this.loadcustomer();
+
+    } 
+    );
+  }
+
   agregarusuario() {
     this.Openpopup(0, 'Registro Usuario', PopupComponent);
   }
