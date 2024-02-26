@@ -1,115 +1,152 @@
 <form [formGroup]="myform" (ngSubmit)="Saveuser()">
 <h1 mat-dialog-title>{{inputdata.title}}</h1>
 <div mat-dialog-content>
-   <div class="form-group">
-    <label>Usuario</label>
-    <input type="email" formControlName="usuario" matInput>
-    <div *ngIf="submit && f['usuario'].errors" class="invalid-feedback">
-      <div *ngIf="f['usuario'].errors['required']">El usuario es requerido.</div>
-      <div *ngIf="f['usuario'].errors['minlength']">
-        El usuario debe tener más de 6 caracteres.
-      </div>
-      <div *ngIf="f['usuario'].errors['maxlength']">
-        el usuario debe tener menos de 20 caracteres.
-      </div>
-    </div>
-  
-   </div>
-<!--    <mat-form-field>
-    <mat-label>Contraseña</mat-label>
-    <input formControlName="contrasena" matInput>
-   </mat-form-field> -->
 
-   <div class="form-group">
-    <label>Contraseña</label>
-    <input matInput formControlName="contrasena" [type]="'password'">
-    <div *ngIf="submit && f['contrasena'].errors" class="invalid-feedback">
-      <div *ngIf="f['contrasena'].errors['required']">La contraseña es requerida</div>
-      <div *ngIf="f['contrasena'].errors['minlength']">
-        La contraseña debe tener más de 6 caracteres.
+  <div class="row">
+
+    <div class="col-5 input-group form-group">
+      <img src="../../../assets/img/user-edit-name.png" alt="User Icon" class="icon">
+      <input formControlName="nombres" placeholder="Nombre" matInput>
+      <div *ngIf="submit && f['nombres'].errors" class="invalid-feedback">
+        <div *ngIf="f['nombres'].errors['required']">El campo nombres es requerido</div>
       </div>
-      <div *ngIf="f['contrasena'].errors['maxlength']">
-        la contraseña debe tener menos de 20 caracteres.
+     </div>
+
+    <div class="col-5 form-group input-group">
+      <img src="../../../assets/img/user-icon.png" alt="User Icon" class="icon">
+      <input type="email" formControlName="usuario" placeholder="Usuario" matInput>
+      <div *ngIf="submit && f['usuario'].errors" class="invalid-feedback">
+        <div *ngIf="f['usuario'].errors['required']">El usuario es requerido.</div>
+        <div *ngIf="f['usuario'].errors['minlength']">
+          El usuario debe tener más de 6 caracteres.
+        </div>
+        <div *ngIf="f['usuario'].errors['maxlength']">
+          el usuario debe tener menos de 20 caracteres.
+        </div>
       </div>
     </div>
-    <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button> -->
+
+  </div>
+
+  <div class="row">
+    <div class="col-5 form-group input-group">
+      <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
+      <input matInput formControlName="contrasena" [type]="'password'" placeholder="Contraseña">
+      <div *ngIf="submit && f['contrasena'].errors" class="invalid-feedback">
+        <div *ngIf="f['contrasena'].errors['required']">La contraseña es requerida</div>
+        <div *ngIf="f['contrasena'].errors['minlength']">
+          La contraseña debe tener más de 6 caracteres.
+        </div>
+        <div *ngIf="f['contrasena'].errors['maxlength']">
+          la contraseña debe tener menos de 20 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-5 form-group input-group">
+      <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
+      <input matInput formControlName="contrasena2" [type]="'password'" placeholder="Repetir contraseña">
+      <div *ngIf="submit && f['contrasena2'].errors" class="invalid-feedback">
+        <div *ngIf="f['contrasena2'].errors['required']">La repeticion de la contraseña es requerida</div>
+        <div *ngIf="f['contrasena2'].errors['minlength']">
+          La contraseña debe tener más de 6 caracteres.
+        </div>
+        <div *ngIf="f['contrasena2'].errors['maxlength']">
+          la contraseña debe tener menos de 20 caracteres.
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="row">
+    <div class="col-5 input-group form-group">
+      <img src="../../../assets/img/user-edit2.png" alt="User Icon" class="icon">
+      <input formControlName="apellido1" placeholder="Primer Apellido" matInput>
+      <div *ngIf="submit && f['apellido1'].errors" class="invalid-feedback">
+        <div *ngIf="f['apellido1'].errors['required']">El campo primer apellido es requerido</div>
+      </div>
+     </div>
+     
+     <div class="col-5 input-group form-group">
+      <img src="../../../assets/img/user-edit2.png" alt="User Icon" class="icon">
+      <input formControlName="apellido2" placeholder="Segundo Apellido" matInput>
+      <div *ngIf="submit && f['apellido2'].errors" class="invalid-feedback">
+        <div *ngIf="f['apellido2'].errors['required']">el campo segundo apellido es requerido</div>
+      </div>
+     </div>
   </div>
 
 
-   <div class="form-group">
-    <label>Nombres</label>
-    <input formControlName="nombres" matInput>
-    <div *ngIf="submit && f['nombres'].errors" class="invalid-feedback">
-      <div *ngIf="f['nombres'].errors['required']">El campo nombres es requerido</div>
-    </div>
-   </div>
-   <div class="form-group">
-    <mat-label>Primer Apellido</mat-label>
-    <input formControlName="apellido1" matInput>
-    <div *ngIf="submit && f['apellido1'].errors" class="invalid-feedback">
-      <div *ngIf="f['apellido1'].errors['required']">El campo primer apellido es requerido</div>
-    </div>
-   </div>
-   <div class="form-group">
-    <mat-label>Segundo Apellido</mat-label>
-    <input formControlName="apellido2" matInput>
-    <div *ngIf="submit && f['apellido2'].errors" class="invalid-feedback">
-      <div *ngIf="f['apellido2'].errors['required']">el campo segundo apellido es requerido</div>
-    </div>
-   </div>
+  <div class="row">
 
-   <div class="form-group">
-    <mat-label>Tipo de Documento</mat-label>
-    <select formControlName="tipodocumento">
-      <option value="CC">Cédula</option>
-      <option value="pasaporte">Pasaporte</option>
-    </select>
-    <div *ngIf="submit && f['tipodocumento'].errors" class="invalid-feedback">
-      <div *ngIf="f['tipodocumento'].errors['required']">El campo tipo de documento es requerido</div>
-    </div>
-  </div>
-
-   <div class="form-group">
-    <mat-label>Identificación</mat-label>
-    <input matInput formControlName="identificacion">
-    <div *ngIf="submit && f['identificacion'].errors" class="invalid-feedback">
-      <div *ngIf="f['identificacion'].errors['required']">El campo de identificación es requerido</div>
-    </div>
-   </div>
-   <div class="form-group">
-    <mat-label>Teléfono</mat-label>
-    <input matInput formControlName="telefono">
-    <div *ngIf="submit && f['telefono'].errors" class="invalid-feedback">
-      <div *ngIf="f['telefono'].errors['required']">El campo teléfono es requerido</div>
-    </div>
-   </div>
-   <div class="form-group">
-    <mat-label>Id del perfil</mat-label>
-    <input matInput formControlName="idperfil">
-    <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
-      <div *ngIf="f['idperfil'].errors['required']">El campo id del perfil es requerido</div>
-    </div>
-   </div>
-   <div class="form-group">
-    
-     <label>Estado</label>
-     <select formControlName="estado" required>
-       <option [value]="0">Inactivo</option>
-       <option [value]="1">Activo</option>
+    <div class="col-4 input-group form-group">
+      <img src="../../../assets/img/identidad.png" alt="Identidad icon" class="icon">
+      <select formControlName="tipodocumento">
+        <option value="" disabled selected>Tipo de documento</option>
+        <option value="CC">Cédula</option>
+        <option value="TI">Tarjeta de Identidad</option>
+        <option value="CE">Cédula de Extranjería</option>
+        <option value="pasaporte">Pasaporte</option>
       </select>
-      
-    
-    <div *ngIf="submit && f['estado'].errors" class="invalid-feedback">
-      <div *ngIf="f['estado'].errors['required']">El campo de estado es requerido</div>
+      <div *ngIf="submit && f['tipodocumento'].errors" class="invalid-feedback">
+        <div *ngIf="f['tipodocumento'].errors['required']">El campo tipo de documento es requerido</div>
+      </div>
     </div>
-   </div>
+    
+
+    <div class="col-4 input-group form-group">
+      <img src="../../../assets/img/identidad.png" alt="Identidad icon" class="icon">
+      <input matInput formControlName="identificacion" placeholder="Identificación" [type]="'number'">
+      <div *ngIf="submit && f['identificacion'].errors" class="invalid-feedback">
+        <div *ngIf="f['identificacion'].errors['required']">El campo de identificación es requerido</div>
+      </div>
+     </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-4 input-group form-group">
+      <img src="../../../assets/img/telefono.png" alt="Telefono icon" class="icon">
+      <input matInput formControlName="telefono" placeholder="Teléfono" [type]="'number'">
+      <div *ngIf="submit && f['telefono'].errors" class="invalid-feedback">
+        <div *ngIf="f['telefono'].errors['required']">El campo teléfono es requerido</div>
+      </div>
+     </div>
+
+    <div class="col-4 input-group form-group">
+      <!-- <input matInput formControlName="idperfil" placeholder="Id del perfil">
+      <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
+        <div *ngIf="f['idperfil'].errors['required']">El campo id del perfil es requerido</div>
+      </div> -->
+      <img src="../../../assets/img/tipo-perfil.png" alt="prfil icon" class="icon">
+      <select formControlName="idperfil" required>
+        <option value="" disabled selected>Tipo de perfil</option>
+        <option [value]="1">Perfil #1</option>
+        <option [value]="2">Perfil #2</option>
+       </select>
+     <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
+       <div *ngIf="f['idperfil'].errors['required']">El campo de estado es requerido</div>
+     </div>
+     </div>
+  
+     <!-- <div class="col-4 input-group form-group">
+       <label>Estado</label>
+       <select formControlName="estado" required>
+         <option [value]="0">Inactivo</option>
+         <option [value]="1">Activo</option>
+        </select>
+      <div *ngIf="submit && f['estado'].errors" class="invalid-feedback">
+        <div *ngIf="f['estado'].errors['required']">El campo de estado es requerido</div>
+      </div>
+     </div> -->
+  </div>
 
 </div>
-<div mat-dialog-actions>
-    <button mat-raised-button type="submit" color="primary">Guardar</button>
-  <a (click)="closepopup()" mat-raised-button color="warn">Cerrar</a>
-  <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+<div mat-dialog-actions class="button-container">
+  <button mat-raised-button type="submit" color="primary" class="btn-primary">Guardar</button>
+  <a (click)="closepopup()" mat-raised-button color="warn" class="btn-secondary">Cerrar</a>
+    <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
 </div>
+<br>
 </form>
