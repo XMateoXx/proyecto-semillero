@@ -52,8 +52,7 @@ export class PopupComponent implements OnInit {
         tipodocumento: this.editdata.tipodocumento,
         identificacion: this.editdata.identificacion,
         telefono: this.editdata.telefono,
-        idperfil: this.editdata.idperfil,
-        estado: this.editdata.estado
+        idperfil: this.editdata.idperfil
       });
     });
   }
@@ -75,10 +74,10 @@ export class PopupComponent implements OnInit {
     tipodocumento: new FormControl('', [Validators.required]),
     identificacion: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
-    idperfil: new FormControl('', [Validators.required]),
-    estado: new FormControl('', [Validators.required]),
+    idperfil: new FormControl('', [Validators.required])
 
   });
+  
 
   /*   para acceder a los controles del formulario (form.controls) de la plantilla. 
   Por ejemplo, podemos conseguir username campo en la plantilla 
@@ -99,8 +98,7 @@ export class PopupComponent implements OnInit {
         identificacion: this.myform.value.identificacion!,
         telefono: this.myform.value.telefono!,
         usuario: this.myform.value.usuario!,
-        tipodocumento: this.myform.value.tipodocumento!,
-        estado: this.myform.value.estado!
+        tipodocumento: this.myform.value.tipodocumento!
       }
       
       
@@ -156,8 +154,7 @@ export class PopupComponent implements OnInit {
       identificacion: "",
       telefono: "",
       usuario:"" ,
-      tipodocumento: "",
-      estado: ""
+      tipodocumento: ""
     };
   }
 }

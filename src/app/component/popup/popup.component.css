@@ -1,52 +1,108 @@
-
-mat-card{
-    margin: 2%;
-    text-align: left;
-}
-
-.mat-mdc-form-field, .form-group{
-    width: 98%;
-    margin: 1%;
-}
-
-  label {
-    margin-bottom: 5px;
-    text-align: left; /* Alinea el texto a la izquierda */
-  }
-
-
-  input, select {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
-    border: 1px solid #000007af; /* Añade un borde para mejorar la apariencia */
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-.mat-50{
-    width: 48%;
-    margin: 1%;
-}
-
-  button{
-    margin: 2px;
-}
-
-.form-group {
-    margin-bottom: 20px;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 form {
- /* background-color: rgba(228, 228, 236, 0.658); */
-    padding: 5px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(26, 48, 247, 0.2);
-   
-  }
-
-.invalid-feedback{
-   color: red;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(26, 48, 247, 0.2);
 }
 
-  
+.mat-mdc-form-field,
+.form-group {
+  width: 48%;
+  margin: 1%;
+}
+
+.mat-mdc-form-field:first-child,
+.form-group:first-child {
+  margin-right: 2%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.col-5,
+.col-7,
+.col-4,
+.col-6 {
+  flex: 0 0 calc(48% - 10px);
+  margin-right: 2%;
+}
+
+.col-6 {
+  margin-right: 0;
+}
+
+.pt-2 {
+  padding-top: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #000007af;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  margin: 2px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+.invalid-feedback {
+  color: red;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+}
+
+
+.dialog-title {
+  text-align: center;
+}
+
+.icon {
+  width: 20px; 
+  height: 20px;
+  margin-right: 10px; 
+}
