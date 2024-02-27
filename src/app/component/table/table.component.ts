@@ -8,6 +8,7 @@ import { MasterService } from 'src/app/service/master.service';
 import { PopupComponent } from '../popup/popup.component';
 import { UserdetailComponent } from '../userdetail/userdetail.component';
 import { Title } from '@angular/platform-browser';
+import { ToastService } from 'src/app/service/toast.service'; 
 
 @Component({
   selector: 'app-table',
@@ -35,7 +36,7 @@ export class TableComponent {
   @ViewChild(MatPaginator) paginatior!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private service: MasterService, private dialog: MatDialog, private titleService: Title) {
+  constructor(private service: MasterService, private dialog: MatDialog, private titleService: Title, private _toastServices: ToastService) {
     this.loadcustomer();
     titleService.setTitle("Modulo de Usuario")
   }
@@ -55,21 +56,57 @@ export class TableComponent {
     this.dataSource.filter = value;
   }
 
-  editcustomer(code: any) {
-    this.Openpopup(code, 'Editar Usuario', PopupComponent);
-  }
+  // editcustomer(code: any) {
+  //   this.Openpopup(code, 'Editar Usuario', PopupComponent);
+  // }
 
+  async editcustomer(code: any) {
+    const confirmacion = await this._toastServices.mostrarConfirmacion(
+      '¿Estás seguro que deseas editar este usuario?',
+      5000 
+    );
+  
+    if (confirmacion) {
+      this.Openpopup(code, 'Editar Usuario', PopupComponent);
+    } else {
+      this._toastServices.mostrarInfo('Accion editar cancelada', 'Información', 3000);
+    }
+  }
+  
   detailcustomer(code: any) {
     this.Openpopup(code, 'Detalles del Usuario', UserdetailComponent);
   }
 
-  eliminarUsuario(id:any) {
-    this.service.eliminarUsuario(id).subscribe((res) =>
-    {
-      this.loadcustomer();
-
-    } 
+  async eliminarUsuario(id:any) {
+    const confirmacion = await this._toastServices.mostrarConfirmacion(
+      '¿Estás seguro que deseas inhabilitar este usuario?',
+      5000 
     );
+    if (confirmacion) {
+      this.service.eliminarUsuario(id).subscribe((res) =>
+      {
+        this.loadcustomer();
+      } 
+      );
+    } else {
+      this._toastServices.mostrarInfo('Accion inhabilitar cancelada', 'Información', 3000);
+    }
+  }
+
+  async activarUsuario(id:any) {
+    const confirmacion = await this._toastServices.mostrarConfirmacion(
+      '¿Estás seguro que deseas activar este usuario?',
+      5000 
+    );
+    if (confirmacion) {
+      this.service.activarUsuario(id).subscribe((res) =>
+      {
+        this.loadcustomer();
+      } 
+      );
+    } else {
+      this._toastServices.mostrarInfo('Accion activar cancelada', 'Información', 3000);
+    }
   }
 
   agregarusuario() {

@@ -49,20 +49,36 @@ export class ToastService {
     });
   }
 
-  mostrarConfirmacion(mensaje: string, duracion: number){
-    Swal.fire({
+  // mostrarConfirmacion(mensaje: string, duracion: number){
+  //   Swal.fire({
+  //     title: mensaje,
+  //     showDenyButton: true,
+  //     showCancelButton: false,
+  //     confirmButtonText: "Si",
+  //     denyButtonText: `No`,
+  //     timer: duracion,
+  //   }).then((result) => {
+  //     /* Read more about isConfirmed, isDenied below */
+  //     if (result.isConfirmed) {
+  //       return true;
+  //     } 
+  //     return false;
+  //   });
+  // }
+
+  mostrarConfirmacion(mensaje: string, duracion: number): Promise<boolean> {
+    return Swal.fire({
       title: mensaje,
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: "Si",
+      confirmButtonColor: '#4caf50',
       denyButtonText: `No`,
       timer: duracion,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        return true;
-      } 
-      return false;
+      return result.isConfirmed;
     });
   }
+  
 }
