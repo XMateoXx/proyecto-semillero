@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit{
         },
         error: async (errorData) => {
           console.error(errorData);
-          this._toastServices.mostrarError("Error al ingresar", "Error", 2000);
+          this._toastServices.mostrarError("Error al ingresar", "Error", 1000);
           this.loginError=errorData;
         }
       });
