@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { colorentity } from '../Entity/colorentity';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { Country, Customer } from '../Model/Customer';
+import { Country, Customer, usuarios } from '../Model/Customer';
 import { Perfil } from '../Model/Perfil';
 import { LoginService } from './auth/login.service';
 
@@ -23,9 +23,9 @@ export class MasterService {
     ]
   }
 
-  GetCustomer():Observable<Customer[]>{
+  GetCustomer():Observable<usuarios[]>{
     let headers = this.header_format();
-    return this.http.get<Customer[]>(`${this._baseURL}/obtener_usuarios`, {headers});
+    return this.http.get<usuarios[]>(`${this._baseURL}/obtener_usuarios`, {headers});
   }
 
   Savecustomer(data:any){

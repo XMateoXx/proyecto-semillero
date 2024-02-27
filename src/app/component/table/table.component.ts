@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Customer } from 'src/app/Model/Customer';
+import { Customer, usuarios } from 'src/app/Model/Customer';
 import { MasterService } from 'src/app/service/master.service';
 import { PopupComponent } from '../popup/popup.component';
 import { UserdetailComponent } from '../userdetail/userdetail.component';
@@ -17,6 +17,7 @@ import { ToastService } from 'src/app/service/toast.service';
 })
 export class TableComponent {
   customerlist!: Customer[];
+  listaUsuarios!: usuarios[];
   dataSource: any;
 
   displayedColumns: string[] = [
@@ -43,9 +44,9 @@ export class TableComponent {
 
   loadcustomer() {
     this.service.GetCustomer().subscribe((res) => {
-      console.log(res)
-      this.customerlist = res;
-      this.dataSource = new MatTableDataSource<Customer>(this.customerlist);
+      console.log(res);
+      this.listaUsuarios = res;
+      this.dataSource = new MatTableDataSource<usuarios>(this.listaUsuarios);
       this.dataSource.paginator = this.paginatior;
       this.dataSource.sort = this.sort;
     });
