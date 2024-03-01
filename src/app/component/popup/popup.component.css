@@ -33,6 +33,8 @@ form {
   display: flex;
   align-items: center;
   width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .col-5,
@@ -89,13 +91,19 @@ button {
 
 .invalid-feedback {
   color: red;
+  display: flex;
+  flex-direction: column;
 }
 .button-container {
   display: flex;
   justify-content: center;
   margin-top: 20px; 
 }
-
+.content-form{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 
 .dialog-title {
   text-align: center;
