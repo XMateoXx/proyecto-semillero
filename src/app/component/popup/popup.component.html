@@ -3,18 +3,15 @@
 <div mat-dialog-content>
 
   <div class="row">
-
     <div class="col-5 input-group form-group">
       <div class="content-form">
         <img src="../../../assets/img/user-edit-name.png" alt="User Icon" class="icon">
         <input formControlName="nombres" placeholder="Nombre" matInput>
-
       </div>
       <div *ngIf="submit && f['nombres'].errors" class="invalid-feedback">
         <span *ngIf="f['nombres'].errors['required']">El campo nombres es requerido</span>
       </div>
      </div>
-
     <div class="col-5 form-group input-group">
       <div class="content-form">
         <img src="../../../assets/img/user-icon.png" alt="User Icon" class="icon">
@@ -30,15 +27,12 @@
         </span>
       </div>
     </div>
-
   </div>
-
   <div class="row">
     <div class="col-5 form-group input-group">
       <div class="content-form">
         <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
         <input matInput formControlName="contrasena" [type]="'password'" placeholder="Contraseña">
-
       </div>
       <div *ngIf="submit && f['contrasena'].errors" class="invalid-feedback">
         <span *ngIf="f['contrasena'].errors['required']">La contraseña es requerida</span>
@@ -50,7 +44,6 @@
         </span>
       </div>
     </div>
-    
     <div class="col-5 form-group input-group">
       <div class="content-form">
         <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
@@ -59,23 +52,8 @@
       <div *ngIf="submit && f['confirm_contrasena'].errors" class="invalid-feedback">
         <span *ngIf="f['confirm_contrasena'].errors['required']">Confirme su contraseña</span>
         <span *ngIf="f['confirm_contrasena'].errors">Las contraseñas no coinciden</span>
-      
       </div>
     </div>
-
-    <!-- <div class="col-5 form-group input-group">
-      <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
-      <input matInput formControlName="contrasena2" [type]="'password'" placeholder="Repetir contraseña">
-      <div *ngIf="submit && f['contrasena2'].errors" class="invalid-feedback">
-        <div *ngIf="f['contrasena2'].errors['required']">La repeticion de la contraseña es requerida</div>
-        <div *ngIf="f['contrasena2'].errors['minlength']">
-          La contraseña debe tener más de 6 caracteres.
-        </div>
-        <div *ngIf="f['contrasena2'].errors['maxlength']">
-          la contraseña debe tener menos de 20 caracteres.
-        </div>
-      </div>
-    </div> -->
   </div>
 
   <div class="row">
@@ -85,7 +63,7 @@
         <input formControlName="apellido1" placeholder="Primer Apellido" matInput>
       </div>
       <div *ngIf="submit && f['apellido1'].errors" class="invalid-feedback">
-        <span *ngIf="f['apellido1'].errors['required']">El campo primer apellido es requerido</span>
+        <span *ngIf="f['apellido1'].errors['required']">El campo primer apellido es requerido.</span>
       </div>
      </div>
      
@@ -95,7 +73,7 @@
         <input formControlName="apellido2" placeholder="Segundo Apellido" matInput>
       </div>
       <div *ngIf="submit && f['apellido2'].errors" class="invalid-feedback">
-        <span *ngIf="f['apellido2'].errors['required']">el campo segundo apellido es requerido</span>
+        <span *ngIf="f['apellido2'].errors['required']">El campo segundo apellido es requerido.</span>
       </div>
      </div>
   </div>
@@ -116,7 +94,7 @@
       </div>
 
       <div *ngIf="submit && f['tipodocumento'].errors" class="invalid-feedback">
-        <span *ngIf="f['tipodocumento'].errors['required']">El campo tipo de documento es requerido</span>
+        <span *ngIf="f['tipodocumento'].errors['required']">El campo tipo de documento es requerido.</span>
       </div>
     </div>
     
@@ -127,7 +105,7 @@
         <input matInput formControlName="identificacion" placeholder="Identificación" [type]="'number'">
       </div>
       <div *ngIf="submit && f['identificacion'].errors" class="invalid-feedback">
-        <span *ngIf="f['identificacion'].errors['required']">El campo de identificación es requerido</span>
+        <span *ngIf="f['identificacion'].errors['required']">El campo de identificación es requerido.</span>
       </div>
      </div>
 
@@ -141,15 +119,11 @@
         <input matInput formControlName="telefono" placeholder="Teléfono" [type]="'number'">
       </div>
       <div *ngIf="submit && f['telefono'].errors" class="invalid-feedback">
-        <span *ngIf="f['telefono'].errors['required']">El campo teléfono es requerido</span>
+        <span *ngIf="f['telefono'].errors['required']">El campo teléfono es requerido.</span>
       </div>
      </div>
 
     <div class="col-4 input-group form-group">
-      <!-- <input matInput formControlName="idperfil" placeholder="Id del perfil">
-      <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
-        <div *ngIf="f['idperfil'].errors['required']">El campo id del perfil es requerido</div>
-      </div> -->
       <div class="content-form">
         <img src="../../../assets/img/tipo-perfil.png" alt="perfil icon" class="icon">
         <select formControlName="idperfil" required>
@@ -158,20 +132,10 @@
          </select>
       </div>
      <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
-       <span *ngIf="f['idperfil'].errors['required']">El campo de estado es requerido</span>
+       <span *ngIf="f['idperfil'].errors['required']">El campo de estado es requerido.</span>
      </div>
      </div>
   
-     <!-- <div class="col-4 input-group form-group">
-       <label>Estado</label>
-       <select formControlName="estado" required>
-         <option [value]="0">Inactivo</option>
-         <option [value]="1">Activo</option>
-        </select>
-      <div *ngIf="submit && f['estado'].errors" class="invalid-feedback">
-        <div *ngIf="f['estado'].errors['required']">El campo de estado es requerido</div>
-      </div>
-     </div> -->
   </div>
 
 </div>
