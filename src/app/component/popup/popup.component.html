@@ -42,6 +42,16 @@
         </div>
       </div>
     </div>
+    
+    <div class="col-5 form-group input-group">
+      <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
+      <input formControlName="confirm_contrasena" [type]="'password'" placeholder="Confirmar Contraseña">
+      <div *ngIf="submit && f['confirm_contrasena'].errors" class="invalid-feedback">
+        <div *ngIf="f['confirm_contrasena'].errors['required']">Confirme su contraseña</div>
+        <div *ngIf="f['confirm_contrasena'].errors">Las contraseñas no coinciden</div>
+      
+      </div>
+    </div>
 
     <!-- <div class="col-5 form-group input-group">
       <img src="../../../assets/img/user-password.png" alt="User password" class="icon">
@@ -119,11 +129,11 @@
       <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
         <div *ngIf="f['idperfil'].errors['required']">El campo id del perfil es requerido</div>
       </div> -->
-      <img src="../../../assets/img/tipo-perfil.png" alt="prfil icon" class="icon">
+      <img src="../../../assets/img/tipo-perfil.png" alt="perfil icon" class="icon">
       <select formControlName="idperfil" required>
         <option value="" disabled selected>Tipo de perfil</option>
-        <option [value]="1">Perfil #1</option>
-        <option [value]="2">Perfil #2</option>
+        <option [value]="perfil.id" *ngFor="let perfil of lista_perfiles">{{ perfil.nombre }}</option>
+        
        </select>
      <div *ngIf="submit && f['idperfil'].errors" class="invalid-feedback">
        <div *ngIf="f['idperfil'].errors['required']">El campo de estado es requerido</div>
