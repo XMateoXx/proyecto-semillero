@@ -11,9 +11,9 @@ export class PerfilService {
   private _baseURL = "http://localhost:8000";
   constructor(private http: HttpClient, private _loginService: LoginService) { }
 
-  obtenerPerfiles():Observable<Perfil[]>{
+  obtenerPerfilesActivos():Observable<Perfil[]>{
     let headers = this.header_format();
-    return this.http.get<Perfil[]>(`${this._baseURL}/obtener_perfils`, {headers});
+    return this.http.get<Perfil[]>(`${this._baseURL}/obtener_perfiles_activos`, {headers});
   }
 
   header_format(){
