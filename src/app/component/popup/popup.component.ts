@@ -47,7 +47,7 @@ export class PopupComponent implements OnInit {
     }
   }
   cargar_perfiles() {
-    this._servicioPerfil.obtenerPerfiles().subscribe((res) => {
+    this._servicioPerfil.obtenerPerfilesActivos().subscribe((res) => {
       this.lista_perfiles = res;
     });
   }
@@ -59,7 +59,7 @@ export class PopupComponent implements OnInit {
       this.myform.setValue({
         usuario: this.editdata.usuario,
         contrasena: this.editdata.contrasena,
-        confirm_contrasena: '',
+        confirm_contrasena: this.editdata.contrasena,
         nombres: this.editdata.nombres,
         apellido1: this.editdata.apellido1,
         apellido2: this.editdata.apellido2,
@@ -107,13 +107,6 @@ export class PopupComponent implements OnInit {
     },
     {validators: this.checkPasswords});
  
-
-
- 
-  
-  /*   para acceder a los controles del formulario (form.controls) de la plantilla. 
-  Por ejemplo, podemos conseguir username campo en la plantilla 
-  usando f.username en lugar de form.controls.username. */
   get f(): { [key: string]: AbstractControl } {
     return this.myform.controls;
   }

@@ -18,6 +18,12 @@ import { LoginComponent } from './component/auth/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ModuloNivelComponent } from './modulos/modulo-nivel/modulo-nivel.component';
+import { FormComponent } from './modulos/modulo-nivel/component/form/form.component';
+import { ModuloCargoComponent } from './modulos/modulo-cargo/modulo-cargo.component';
+import { FormCargoComponent } from './modulos/modulo-cargo/component/form-cargo/form-cargo.component';
+import { ModuloTipoEvaluacionComponent } from './modulos/modulo-tipo-evaluacion/modulo-tipo-evaluacion.component';
+import { FormTipoEComponent } from './modulos/modulo-tipo-evaluacion/component/form-tipo-e/form-tipo-e.component';
 
 
 @NgModule({
@@ -31,8 +37,12 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     UserdetailComponent,
     LoginComponent,
     RegisterComponent,
-    
-       
+    ModuloNivelComponent,
+    FormComponent,
+    ModuloCargoComponent,
+    FormCargoComponent,
+    ModuloTipoEvaluacionComponent,
+    FormTipoEComponent,   
   ],
   imports: [
     CommonModule,
