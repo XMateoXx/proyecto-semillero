@@ -5,12 +5,12 @@
   <span>MENÚ</span>
   <span class="example-spacer"></span>
 
-<!--   
+  <!--   
   <button routerLink="" mat-button>Home</button>
  -->
-<!--   <a mat-raised-button color="warn" (click)="cerrarIngreso()"
+  <!--   <a mat-raised-button color="warn" (click)="cerrarIngreso()"
     >Cerrar Sesión</a> -->
-<!--   <button (click)="badgevisibility()" mat-icon-button>
+  <!--   <button (click)="badgevisibility()" mat-icon-button>
     <mat-icon
       matBadgeColor="accent"
       matBadge="15"
@@ -23,7 +23,7 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer opened="true" mode="side" position="start">
     <mat-nav-list>
-      <mat-list-item  routerLink="/principal">
+      <mat-list-item routerLink="/principal">
         <button mat-button>
           <mat-icon>dashboard</mat-icon>Principal
         </button>
@@ -31,7 +31,37 @@
 
       <mat-list-item routerLink="/table">
         <button mat-button>
-          <mat-icon>table</mat-icon> Modulo de Usuario
+          <mat-icon>table</mat-icon> Modulo Usuario
+        </button>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/modulo_nivel">
+        <button mat-button>
+          <mat-icon>table</mat-icon> Modulo Nivel
+        </button>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/modulo_cargo">
+        <button mat-button>
+          <mat-icon>table</mat-icon> Modulo Cargo
+        </button>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/modulo_tipoevaluacion">
+        <button mat-button>
+          <mat-icon>table</mat-icon> Modulo Tipo Evaluacion
+        </button>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/modulo_competencia">
+        <button mat-button>
+          <mat-icon>table</mat-icon> Modulo Competencia
+        </button>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/modulo_comportamiento">
+        <button mat-button>
+          <mat-icon>table</mat-icon> Modulo Comportamiento
         </button>
       </mat-list-item>
 
@@ -54,7 +84,7 @@
 
   </mat-drawer>
   <mat-drawer-content>
-      <ng-content></ng-content>
+    <ng-content></ng-content>
     <div style="text-align: center; min-height: 600px">
 
     </div>

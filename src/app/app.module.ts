@@ -21,6 +21,16 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FacultadComponent } from './component/facultad/facultad.component';
 import { ProgramaComponent } from './component/programa/programa.component';
 import { AsignaturaComponent } from './component/asignatura/asignatura.component';
+import { ModuloNivelComponent } from './modulos/modulo-nivel/modulo-nivel.component';
+import { FormComponent } from './modulos/modulo-nivel/component/form/form.component';
+import { ModuloCargoComponent } from './modulos/modulo-cargo/modulo-cargo.component';
+import { FormCargoComponent } from './modulos/modulo-cargo/component/form-cargo/form-cargo.component';
+import { ModuloTipoEvaluacionComponent } from './modulos/modulo-tipo-evaluacion/modulo-tipo-evaluacion.component';
+import { FormTipoEComponent } from './modulos/modulo-tipo-evaluacion/component/form-tipo-e/form-tipo-e.component';
+import { ModuloCompetenciaComponent } from './modulos/modulo-competencia/modulo-competencia.component';
+import { FormCompetenciaComponent } from './modulos/modulo-competencia/component/form-competencia/form-competencia.component';
+import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/modulo-comportamiento.component';
+import { FormComportamientoComponent } from './modulos/modulo-comportamiento/component/form-comportamiento/form-comportamiento.component';
 
 
 @NgModule({
@@ -37,8 +47,16 @@ import { AsignaturaComponent } from './component/asignatura/asignatura.component
     FacultadComponent,
     ProgramaComponent,
     AsignaturaComponent,
-    
-       
+    ModuloNivelComponent,
+    FormComponent,
+    ModuloCargoComponent,
+    FormCargoComponent,
+    ModuloTipoEvaluacionComponent,
+    FormTipoEComponent,
+    ModuloCompetenciaComponent,
+    FormCompetenciaComponent,
+    ModuloComportamientoComponent,
+    FormComportamientoComponent,
   ],
   imports: [
     CommonModule,
