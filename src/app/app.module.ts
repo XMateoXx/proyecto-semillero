@@ -18,6 +18,9 @@ import { LoginComponent } from './component/auth/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FacultadComponent } from './component/facultad/facultad.component';
+import { ProgramaComponent } from './component/programa/programa.component';
+import { AsignaturaComponent } from './component/asignatura/asignatura.component';
 
 
 @NgModule({
@@ -31,6 +34,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     UserdetailComponent,
     LoginComponent,
     RegisterComponent,
+    FacultadComponent,
+    ProgramaComponent,
+    AsignaturaComponent,
     
        
   ],

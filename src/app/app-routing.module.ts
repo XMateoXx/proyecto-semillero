@@ -6,7 +6,7 @@ import { TableComponent } from './component/table/table.component';
 import { MenubarComponent } from './component/menubar/menubar.component';
 import { LoginComponent } from './component/auth/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
-
+import { FacultadComponent } from './component/facultad/facultad.component';
 
 
 const routes: Routes = [
@@ -16,6 +16,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent, data: {title: "Inicio de sessión"}},
   {path:'menubar',component:MenubarComponent},
   {path:'register',component:RegisterComponent},
+  {path: 'facultad', component:FacultadComponent},
   { path: '**', redirectTo: '/login' }
   
 
