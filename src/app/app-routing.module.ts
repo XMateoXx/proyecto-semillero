@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: "Inicio de sessión" } },
   { path: 'menubar', component: MenubarComponent },
   { path: 'register', component: RegisterComponent },
+  {path: 'facultad', component:FacultadComponent},
   { path: 'modulo_nivel', component: ModuloNivelComponent },
   { path: 'modulo_cargo', component: ModuloCargoComponent },
   { path: 'modulo_tipoevaluacion', component: ModuloTipoEvaluacionComponent },
