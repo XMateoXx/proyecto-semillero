@@ -13,6 +13,7 @@ import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/m
 import { ModuloCompetenciaComponent } from './modulos/modulo-competencia/modulo-competencia.component';
 import { FacultadComponent } from './component/facultad/facultad.component';
 import { ProgramaComponent } from './component/programa/programa.component';
+import { AsignaturaComponent } from './component/asignatura/asignatura.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {path: 'facultad', component:FacultadComponent},
   {path: 'programa', component:ProgramaComponent},
+  {path: 'asignatura', component:AsignaturaComponent},
   { path: 'modulo_nivel', component: ModuloNivelComponent },
   { path: 'modulo_cargo', component: ModuloCargoComponent },
   { path: 'modulo_tipoevaluacion', component: ModuloTipoEvaluacionComponent },
