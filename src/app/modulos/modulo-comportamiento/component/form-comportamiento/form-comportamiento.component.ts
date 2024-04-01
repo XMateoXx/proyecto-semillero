@@ -75,44 +75,48 @@ export class FormComportamientoComponent implements OnInit {
 
     saveComportamiento() {
         this.submit = true;
-        if (this.myform.valid) {
-            if (this.editdata != null) {
-                this.dataComportamiento = {
-                    id: this.idComportamiento,
-                    nombre: this.myform.value.nombre!,
-                    descripcion: this.myform.value.descripcion!,
-                    idcompetencia: Number(this.myform.value.idcompetencia!)
+        if (this.myform.valid)
+        {
+            if (this.myform.valid) {
+                if (this.editdata != null) {
+                    this.dataComportamiento = {
+                        id: this.idComportamiento,
+                        nombre: this.myform.value.nombre!,
+                        descripcion: this.myform.value.descripcion!,
+                        idcompetencia: Number(this.myform.value.idcompetencia!)
+                    }
+                    this.service.actualizarComportamiento(this.dataComportamiento).subscribe({
+                        next: (response) => {
+                            this._servicioToast.mostrarExito(
+                                'Actualizado correctamente.',
+                                'Aprobado',
+                                1000
+                            );
+                            this.resertForm();
+                        },
+                        error: (response) => {
+                            console.log('Error al actualizar.');
+                            this._servicioToast.mostrarError('Error al actualizar.', 'Error', 1000);
+                        },
+                    });
+                } else {
+                    this.service.SaveComportamiento(this.myform.value).subscribe({
+                        next: (response) => {
+                            this._servicioToast.mostrarExito(
+                                'Registrado correctamente.',
+                                'Aprobado',
+                                1000
+                            );
+                            this.resertForm();
+                        },
+                        error: (response) => {
+                            console.log('Error al registrar.');
+                            this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
+                        },
+                    });
                 }
-                this.service.actualizarComportamiento(this.dataComportamiento).subscribe({
-                    next: (response) => {
-                        this._servicioToast.mostrarExito(
-                            'Actualizado correctamente.',
-                            'Aprobado',
-                            1000
-                        );
-                        this.resertForm();
-                    },
-                    error: (response) => {
-                        console.log('Error al actualizar.');
-                        this._servicioToast.mostrarError('Error al actualizar.', 'Error', 1000);
-                    },
-                });
-            } else {
-                this.service.SaveComportamiento(this.myform.value).subscribe({
-                    next: (response) => {
-                        this._servicioToast.mostrarExito(
-                            'Registrado correctamente.',
-                            'Aprobado',
-                            1000
-                        );
-                        this.resertForm();
-                    },
-                    error: (response) => {
-                        console.log('Error al registrar.');
-                        this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
-                    },
-                });
             }
+
         }
     }
 

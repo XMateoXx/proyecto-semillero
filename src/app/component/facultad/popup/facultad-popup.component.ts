@@ -70,45 +70,48 @@ export class Facultad_PopupComponent implements OnInit {
 
   guardarFacultad(){
     this.submit = true;
-    if (this.editdata != null) {
-        this.dataFacultad = {
-            id: this.idFacultad,
-            nombre: this.myform.value.nombre!,
-            descripcion: this.myform.value.descripcion!,
-      
-        }
-        this.service.actualizarFacultad(this.dataFacultad).subscribe({
-            next: (response) => {
-                this._servicioToast.mostrarExito(
-                    'Actualizado correctamente.',
-                    'Aprobado',
-                    1000
-                );
-                this.resertForm();
+    if (this.myform.valid){
+      if (this.editdata != null) {
+          this.dataFacultad = {
+              id: this.idFacultad,
+              nombre: this.myform.value.nombre!,
+              descripcion: this.myform.value.descripcion!,
+        
+          }
+          this.service.actualizarFacultad(this.dataFacultad).subscribe({
+              next: (response) => {
+                  this._servicioToast.mostrarExito(
+                      'Actualizado correctamente.',
+                      'Aprobado',
+                      1000
+                  );
+                  this.resertForm();
+  
+              },
+              error: (response) => {
+                  //TODO implementar Toast
+                  console.log('Error al actualizar.');
+                  this._servicioToast.mostrarError('Error al actualizar.', 'Error', 1000);
+              },
+          });
+      } else {
+  
+          this.service.guardarFacultad(this.myform.value).subscribe({
+              next: (response) => {
+                  this._servicioToast.mostrarExito(
+                      'Registrado correctamente.',
+                      'Aprobado',
+                      1000
+                  );
+                  this.resertForm();
+              },
+              error: (response) => {
+                  console.log('Error al registrar.');
+                  this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
+              },
+          });
+      }
 
-            },
-            error: (response) => {
-                //TODO implementar Toast
-                console.log('Error al actualizar.');
-                this._servicioToast.mostrarError('Error al actualizar.', 'Error', 1000);
-            },
-        });
-    } else {
-
-        this.service.guardarFacultad(this.myform.value).subscribe({
-            next: (response) => {
-                this._servicioToast.mostrarExito(
-                    'Registrado correctamente.',
-                    'Aprobado',
-                    1000
-                );
-                this.resertForm();
-            },
-            error: (response) => {
-                console.log('Error al registrar.');
-                this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
-            },
-        });
     }
   }
 

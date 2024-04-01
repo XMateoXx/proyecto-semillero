@@ -66,6 +66,7 @@ export class FormCompetenciaComponent implements OnInit {
 
     saveCompetencia() {
         this.submit = true;
+        if (this.myform.valid){
         if (this.editdata != null) {
             this.dataCompetencia = {
                 id: this.idcompetencia,
@@ -105,6 +106,7 @@ export class FormCompetenciaComponent implements OnInit {
                 },
             });
         }
+    }
     }
 
     resertForm() {

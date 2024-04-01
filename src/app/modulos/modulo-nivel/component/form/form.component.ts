@@ -66,44 +66,47 @@ export class FormComponent implements OnInit{
 
   saveNivel() {
     this.submit = true;
-    if (this.editdata != null){
-      this.dataNivel = {
-        id: this.idnivel,
-        nombre: this.myform.value.nombre!,
-        descripcion: this.myform.value.descripcion!
+    if (this.myform.valid){
+      if (this.editdata != null){
+        this.dataNivel = {
+          id: this.idnivel,
+          nombre: this.myform.value.nombre!,
+          descripcion: this.myform.value.descripcion!
+        }
+        this.service.actualizarNivel(this.dataNivel).subscribe({
+          next: (response) => {
+            this._servicioToast.mostrarExito(
+              'Actualizado correctamente.',
+              'Aprobado',
+              1000
+            );
+            this.resertForm();
+           
+          },
+          error: (response) => {
+            //TODO implementar Toast
+            console.log('Error al actualizar.');
+            this._servicioToast.mostrarError('Error al actualizar.', 'Error', 1000);
+          },
+        });
+      }else {
+  
+        this.service.SaveNivel(this.myform.value).subscribe({
+          next: (response) => {
+            this._servicioToast.mostrarExito(
+              'Registrado correctamente.',
+              'Aprobado',
+              1000
+            );
+            this.resertForm();
+          },
+          error: (response) => {
+            console.log('Error al registrar.');
+            this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
+          },
+        });
       }
-      this.service.actualizarNivel(this.dataNivel).subscribe({
-        next: (response) => {
-          this._servicioToast.mostrarExito(
-            'Actualizado correctamente.',
-            'Aprobado',
-            1000
-          );
-          this.resertForm();
-         
-        },
-        error: (response) => {
-          //TODO implementar Toast
-          console.log('Error al actualizar.');
-          this._servicioToast.mostrarError('Error al actualizar.', 'Error', 1000);
-        },
-      });
-    }else {
 
-      this.service.SaveNivel(this.myform.value).subscribe({
-        next: (response) => {
-          this._servicioToast.mostrarExito(
-            'Registrado correctamente.',
-            'Aprobado',
-            1000
-          );
-          this.resertForm();
-        },
-        error: (response) => {
-          console.log('Error al registrar.');
-          this._servicioToast.mostrarError('Error al registrar.', 'Error', 1000);
-        },
-      });
     }
   }
 
