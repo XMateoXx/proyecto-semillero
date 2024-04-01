@@ -12,6 +12,8 @@ import { ModuloTipoEvaluacionComponent } from './modulos/modulo-tipo-evaluacion/
 import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/modulo-comportamiento.component';
 import { ModuloCompetenciaComponent } from './modulos/modulo-competencia/modulo-competencia.component';
 import { FacultadComponent } from './component/facultad/facultad.component';
+import { ProgramaComponent } from './component/programa/programa.component';
+
 
 
 const routes: Routes = [
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'menubar', component: MenubarComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'facultad', component:FacultadComponent},
+  {path: 'programa', component:ProgramaComponent},
   { path: 'modulo_nivel', component: ModuloNivelComponent },
   { path: 'modulo_cargo', component: ModuloCargoComponent },
   { path: 'modulo_tipoevaluacion', component: ModuloTipoEvaluacionComponent },

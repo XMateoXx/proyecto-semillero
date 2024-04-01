@@ -32,6 +32,7 @@ import { FormCompetenciaComponent } from './modulos/modulo-competencia/component
 import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/modulo-comportamiento.component';
 import { FormComportamientoComponent } from './modulos/modulo-comportamiento/component/form-comportamiento/form-comportamiento.component';
 import { Facultad_PopupComponent } from './component/facultad/popup/facultad-popup.component';
+import { ProgramaPopupComponent } from './component/programa/programa-popup/programa-popup.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { Facultad_PopupComponent } from './component/facultad/popup/facultad-pop
     FormCompetenciaComponent,
     ModuloComportamientoComponent,
     FormComportamientoComponent,
-    Facultad_PopupComponent
+    Facultad_PopupComponent,
+    ProgramaPopupComponent
   ],
   imports: [
     CommonModule,

@@ -54,7 +54,7 @@ export class PopupComponent implements OnInit {
   setpopupdata(code: any) {
     this.service.GetCustomerbycode(code).subscribe((item) => {
       this.idusuario = code;
-      console.log(code);
+      console.log(item);
       this.editdata = item;
       this.myform.setValue({
         usuario: this.editdata.usuario,

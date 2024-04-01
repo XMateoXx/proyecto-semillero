@@ -1,1 +1,86 @@
-<p>programa works!</p>
+<app-menubar>
+    <mat-card>
+      <mat-card-header>
+        <mat-form-field>
+          <input matInput (keyup)="Filterchange($event)" placeholder="BUSCAR" />
+        </mat-form-field>
+        <button
+          style="margin-left: 60%"
+          (click)="agregarPrograma()"
+          mat-raised-button
+          color="primary"
+        >
+          Añadir programa(+)
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <table
+          matSort
+          mat-table
+          [dataSource]="pdataSource"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="id">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+          </ng-container>
+          <ng-container matColumnDef="descripcion">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+          </ng-container>
+          <ng-container matColumnDef="idfacultad">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Facultad</th>
+            <td mat-cell *matCellDef="let element">{{ element.idfacultad }}</td>
+          </ng-container>
+          <ng-container matColumnDef="estado">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Estado</th>
+            <td mat-cell *matCellDef="let element">
+              <ng-container *ngIf="element.estado === 1; else inactivoTemplate">
+                <span class="activo">Activo</span>
+              </ng-container>
+              <ng-template #inactivoTemplate>
+                <span class="inactivo">Inactivo</span>
+              </ng-template>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element" class="action">
+              <button
+                (click)="editarPrograma(element.id)"
+                matTooltip="Editar Programa"
+                color="primary"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                *ngIf="element.estado == 1"
+                (click)="eliminarPrograma(element.id)"
+                matTooltip="Deshabilitar Programa"
+                color="warn"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+  
+              <button
+                *ngIf="element.estado == 0"
+                (click)="activarPrograma(element.id)"
+                matTooltip="Activar Programa"
+                color="warn"
+              >
+                <mat-icon>cached</mat-icon>
+              </button>
+              <!--               <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </app-menubar>
+  
