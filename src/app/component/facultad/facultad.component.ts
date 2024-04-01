@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { PopupComponent } from './popup/popup.component';
+import { Facultad_PopupComponent } from './popup/facultad-popup.component';
 import { Title } from '@angular/platform-browser';
 import { FacultadService } from 'src/app/service/facultad.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -47,7 +47,7 @@ export class FacultadComponent {
   }
 
   agregarFacultad(){
-
+    this.Openpopup(0, "Agregar Facultad", Facultad_PopupComponent);
   }
 
   async editarFacultad(code: any){
@@ -56,7 +56,7 @@ export class FacultadComponent {
       5000 
     );
     if (confirmacion) {
-      this.Openpopup(code, 'Editar Facultad', PopupComponent);
+      this.Openpopup(code, 'Editar Facultad', Facultad_PopupComponent);
     } else{
       this._toastService.mostrarInfo('Accion editar cancelada', 'Información', 3000);
     }
