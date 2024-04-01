@@ -62,12 +62,45 @@ export class FacultadComponent {
     }
   }
 
-  eliminarFacultad(code: any)
+  async eliminarFacultad(code: any)
   {
-
+    const confirmacion = await this._toastService.mostrarConfirmacion(
+      '¿Estás seguro que deseas deshabilitar esta facultad?',
+      7000
+  );
+  if (confirmacion) {
+      this.fService.deshabilitarFacultad(code).subscribe((res) => {
+          this._toastService.mostrarExito(
+              'Facultad deshabilitada correctamente.',
+              'Aprobado',
+              2000
+          );
+          this.cargarTablaFacultades();
+      }
+      );
+  } else {
+      this._toastService.mostrarInfo('Accion deshabilitar cancelada', 'Información', 3000);
+  }
   }
 
-  activarFacultad(code: any){
+  async activarFacultad(code: any){
+    const confirmacion = await this._toastService.mostrarConfirmacion(
+      '¿Estás seguro que deseas activar esta facultad?',
+      7000
+  );
+  if (confirmacion) {
+      this.fService.activarFacultad(code).subscribe((res) => {
+          this._toastService.mostrarExito(
+              'Facultad activada correctamente.',
+              'Aprobado',
+              2000
+          );
+          this.cargarTablaFacultades();
+      }
+      );
+  } else {
+      this._toastService.mostrarInfo('Accion activar cancelada', 'Información', 3000);
+  }
 
   }
 
