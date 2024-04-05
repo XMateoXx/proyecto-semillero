@@ -1,4 +1,4 @@
-<form [formGroup]="myform" (ngSubmit)="guardarPrograma()">
+<form [formGroup]="myform" (ngSubmit)="guardarAsignatura()">
     <h1 class="dialog-title">{{ inputdata.title }}</h1>
   
     <div class="mat-dialog-content">
@@ -17,6 +17,18 @@
       <div class="row">
         <div class="form-group input-group">
           <mat-icon class="icon">label_important</mat-icon>
+          <input formControlName="codigo" placeholder="Codigo" matInput />
+          <div *ngIf="submit && f['codigo'].errors" class="invalid-feedback">
+            <div *ngIf="f['codigo'].errors['required']">
+              El campo codigo es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group input-group">
+          <mat-icon class="icon">label_important</mat-icon>
           <textarea
             formControlName="descripcion"
             placeholder="Descripción"
@@ -30,24 +42,7 @@
         </div>
       </div>
   
-      <div class="row">
-        <div class="form-group input-group">
-          <mat-icon class="icon">label_important</mat-icon>
-          <select formControlName="idfacultad" required>
-            <option value="" disabled selected>Facultad</option>
-            <option [value]="facultad.id" *ngFor="let facultad of lista_facultad">
-              {{ facultad.nombre }}
-            </option>
-          </select>
-  
-          <div *ngIf="submit && f['idfacultad'].errors" class="invalid-feedback">
-            <span *ngIf="f['idfacultad'].errors['required']"
-              >El campo de estado es requerido.</span
-            >
-          </div>
-  
-        </div>
-      </div>
+      
     </div>
   
     <div class="mat-dialog-actions button-container">
