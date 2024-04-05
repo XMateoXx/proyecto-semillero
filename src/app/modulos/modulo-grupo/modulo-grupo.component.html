@@ -1,0 +1,103 @@
+<app-menubar>
+  <p>modulo-grupo works!</p>
+  <mat-card>
+    <mat-card-header>
+      <mat-form-field>
+        <input matInput (keyup)="Filterchange($event)" placeholder="BUSCAR" />
+      </mat-form-field>
+      <button
+        style="margin-left: 60%"
+        (click)="agregarGrupo()"
+        mat-raised-button
+        color="primary"
+      >
+        Añadir Grupo(+)
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+        <table
+          matSort
+          mat-table
+          [dataSource]="grupoDataSource"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="id">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="programa">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Programa</th>
+            <td mat-cell *matCellDef="let element">{{ element.programa }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="asignatura">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Asignatura</th>
+            <td mat-cell *matCellDef="let element">{{ element.asignatura }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="creditos">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Creditos</th>
+            <td mat-cell *matCellDef="let element">{{ element.creditos }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="descripcion">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="estado">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Estado</th>
+            <td mat-cell *matCellDef="let element">
+              <ng-container *ngIf="element.estado === 1; else inactivoTemplate">
+                <span class="activo">Activo</span>
+              </ng-container>
+              <ng-template #inactivoTemplate>
+                <span class="inactivo">Inactivo</span>
+              </ng-template>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Accion</th>
+            <td mat-cell *matCellDef="let element" class="action">
+              <button
+                (click)="editarGrupo(element.id)"
+                matTooltip="Editar Grupo"
+                color="primary"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                *ngIf="element.estado == 1"
+                (click)="eliminarGrupo(element.id)"
+                matTooltip="Deshabilitar Grupo"
+                color="warn"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+  
+              <button
+                *ngIf="element.estado == 0"
+                (click)="activarGrupo(element.id)"
+                matTooltip="Activar Grupo"
+                color="warn"
+              >
+                <mat-icon>cached</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-card-content>
+    <br />
+    <mat-card-footer>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-footer>
+  </mat-card>
+</app-menubar>

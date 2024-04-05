@@ -14,6 +14,7 @@ import { ModuloCompetenciaComponent } from './modulos/modulo-competencia/modulo-
 import { FacultadComponent } from './component/facultad/facultad.component';
 import { ProgramaComponent } from './component/programa/programa.component';
 import { AsignaturaComponent } from './component/asignatura/asignatura.component';
+import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'modulo_tipoevaluacion', component: ModuloTipoEvaluacionComponent },
   { path: 'modulo_competencia', component: ModuloCompetenciaComponent },
   { path: 'modulo_comportamiento', component: ModuloComportamientoComponent },
+  { path: 'modulo_grupo', component: ModuloGrupoComponent },
   { path: '**', redirectTo: '/login' }
 ];
 

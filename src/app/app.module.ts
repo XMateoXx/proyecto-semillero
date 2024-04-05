@@ -18,9 +18,8 @@ import { LoginComponent } from './component/auth/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { FacultadComponent } from './component/facultad/facultad.component';
-import { ProgramaComponent } from './component/programa/programa.component';
-import { AsignaturaComponent } from './component/asignatura/asignatura.component';
+
+// MODULOS
 import { ModuloNivelComponent } from './modulos/modulo-nivel/modulo-nivel.component';
 import { FormComponent } from './modulos/modulo-nivel/component/form/form.component';
 import { ModuloCargoComponent } from './modulos/modulo-cargo/modulo-cargo.component';
@@ -31,9 +30,16 @@ import { ModuloCompetenciaComponent } from './modulos/modulo-competencia/modulo-
 import { FormCompetenciaComponent } from './modulos/modulo-competencia/component/form-competencia/form-competencia.component';
 import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/modulo-comportamiento.component';
 import { FormComportamientoComponent } from './modulos/modulo-comportamiento/component/form-comportamiento/form-comportamiento.component';
+import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
+
+// Corregir: Colocar dentro de la carpeta de modulos
 import { Facultad_PopupComponent } from './component/facultad/popup/facultad-popup.component';
 import { ProgramaPopupComponent } from './component/programa/programa-popup/programa-popup.component';
 import { AsignaturaPopupComponent } from './component/asignatura/asignatura-popup/asignatura-popup.component';
+import { FacultadComponent } from './component/facultad/facultad.component';
+import { ProgramaComponent } from './component/programa/programa.component';
+import { AsignaturaComponent } from './component/asignatura/asignatura.component';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +67,8 @@ import { AsignaturaPopupComponent } from './component/asignatura/asignatura-popu
     FormComportamientoComponent,
     Facultad_PopupComponent,
     ProgramaPopupComponent,
-    AsignaturaPopupComponent
+    AsignaturaPopupComponent,
+    ModuloGrupoComponent
   ],
   imports: [
     CommonModule,
