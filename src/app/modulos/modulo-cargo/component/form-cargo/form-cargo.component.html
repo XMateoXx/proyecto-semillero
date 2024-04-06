@@ -8,6 +8,9 @@
           <input formControlName="nombre" placeholder="Nombre" matInput>
           <div *ngIf="submit && f['nombre'].errors" class="invalid-feedback">
             <div *ngIf="f['nombre'].errors['required']">El campo nombre es requerido</div>
+            <span *ngIf="f['nombre'].errors['minlength']">
+              El nombre debe tener más de 3 caracteres.
+            </span>
           </div>
         </div>
       </div>
@@ -18,6 +21,9 @@
           <textarea formControlName="descripcion" placeholder="Descripción" matInput></textarea>
           <div *ngIf="submit && f['descripcion'].errors" class="invalid-feedback">
             <div *ngIf="f['descripcion'].errors['required']">La descripción es requerida.</div>
+            <span *ngIf="f['descripcion'].errors['minlength']">
+              El nombre debe tener más de 6 caracteres.
+            </span>
           </div>
         </div>
       </div>

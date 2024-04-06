@@ -51,8 +51,8 @@ export class FormTipoEComponent {
   }
 
   myform = new FormGroup({
-    nombre: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required])
+    nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    descripcion: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   get f(): { [key: string]: AbstractControl } {
