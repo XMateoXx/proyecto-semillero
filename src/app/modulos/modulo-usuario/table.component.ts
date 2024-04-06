@@ -5,8 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Customer, usuarios } from 'src/app/Model/Customer';
 import { MasterService } from 'src/app/service/master.service';
-import { PopupComponent } from '../popup/popup.component';
-import { UserdetailComponent } from '../userdetail/userdetail.component';
+import { PopupComponent } from './popup/popup.component';
+import { UserdetailComponent } from '../../component/userdetail/userdetail.component';
 import { Title } from '@angular/platform-browser';
 import { ToastService } from 'src/app/service/toast.service'; 
 

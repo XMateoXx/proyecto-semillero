@@ -9,9 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenubarComponent } from './component/menubar/menubar.component';
 import { HomeComponent } from './component/home/home.component';
 import { CardComponent } from './component/card/card.component';
-import { TableComponent } from './component/table/table.component';
+import { TableComponent } from './modulos/modulo-usuario/table.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PopupComponent } from './component/popup/popup.component';
+import { PopupComponent } from './modulos/modulo-usuario/popup/popup.component';
 import { UserdetailComponent } from './component/userdetail/userdetail.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './component/auth/login/login.component';
@@ -33,12 +33,12 @@ import { FormComportamientoComponent } from './modulos/modulo-comportamiento/com
 import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
 
 // Corregir: Colocar dentro de la carpeta de modulos
-import { Facultad_PopupComponent } from './component/facultad/popup/facultad-popup.component';
-import { ProgramaPopupComponent } from './component/programa/programa-popup/programa-popup.component';
-import { AsignaturaPopupComponent } from './component/asignatura/asignatura-popup/asignatura-popup.component';
-import { FacultadComponent } from './component/facultad/facultad.component';
-import { ProgramaComponent } from './component/programa/programa.component';
-import { AsignaturaComponent } from './component/asignatura/asignatura.component';
+import { Facultad_PopupComponent } from './modulos/modulo-facultad/popup/facultad-popup.component'; 
+import { ProgramaPopupComponent } from './modulos/modulo-programa/programa-popup/programa-popup.component';
+import { AsignaturaPopupComponent } from './modulos/modulo-asignatura/asignatura-popup/asignatura-popup.component'; 
+import { FacultadComponent } from './modulos/modulo-facultad/facultad.component'; 
+import { ProgramaComponent } from './modulos/modulo-programa/programa.component'; 
+import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component'; 
 
 
 @NgModule({

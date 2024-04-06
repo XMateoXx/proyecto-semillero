@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginService } from './auth/login.service';
-import { Facultad } from '../Model/Facultad';
+import { LoginService } from '../../../service/auth/login.service';
+import { Facultad } from '../../../Model/Facultad';
 import { Observable } from 'rxjs';
 
 @Injectable({

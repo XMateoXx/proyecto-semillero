@@ -1,81 +1,80 @@
 import { Component, ViewChild } from '@angular/core';
-import { Facultad_PopupComponent } from './popup/facultad-popup.component';
 import { Title } from '@angular/platform-browser';
-import { FacultadService } from 'src/app/service/facultad.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Facultad } from 'src/app/Model/Facultad';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ToastService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
-
-
+import { AsignaturaPopupComponent } from './asignatura-popup/asignatura-popup.component';
+import { Asignatura } from 'src/app/Model/Asignatura';
+import { AsignaturaService } from 'src/app/modulos/modulo-asignatura/service/asignatura.service';
 
 @Component({
-  selector: 'app-facultad',
-  templateUrl: './facultad.component.html',
-  styleUrls: ['./facultad.component.css']
+  selector: 'app-asignatura',
+  templateUrl: './asignatura.component.html',
+  styleUrls: ['./asignatura.component.css']
 })
-export class FacultadComponent {
-  fdataSource: any;
+export class AsignaturaComponent {
+  adataSource: any;
 
   displayedColumns: string[] = [
     'id',
     'nombre',
+    'codigo',
     'descripcion',
     'estado',
     'action'
   ];
   @ViewChild(MatPaginator) paginatior!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private _toastService: ToastService, private dialog: MatDialog, private fService: FacultadService, private _serviceTitle: Title){
-    this.cargarTablaFacultades();
-    _serviceTitle.setTitle("Modulo de Facultad");
+  constructor(private _toastService: ToastService, private dialog: MatDialog, private aService: AsignaturaService, private _serviceTitle: Title){
+    this.cargarTablaAsignatura();
+    _serviceTitle.setTitle("Modulo de Asignatura");
   }
-  cargarTablaFacultades(){
-    this.fService.getFacultad().subscribe((res) =>{
-
-      this.fdataSource = new MatTableDataSource<Facultad>(res);
-      this.fdataSource.paginator = this.paginatior;
-      this.fdataSource.sort = this.sort;
+  cargarTablaAsignatura(){
+    this.aService.obtenerAsignaturas().subscribe((res) =>{
+      console.log(res);
+      this.adataSource = new MatTableDataSource<Asignatura>(res);
+      this.adataSource.paginator = this.paginatior;
+      this.adataSource.sort = this.sort;
     });
   }
 
   Filterchange(data: Event) {
     const value = (data.target as HTMLInputElement).value;
-    this.fdataSource.filter = value;
+    this.adataSource.filter = value;
   }
 
-  agregarFacultad(){
-    this.Openpopup(0, "Agregar Facultad", Facultad_PopupComponent);
+  agregarAsignatura(){
+    this.Openpopup(0, "Agregar Asignatura", AsignaturaPopupComponent);
   }
 
-  async editarFacultad(code: any){
+  async editarAsignatura(code: any){
     const confirmacion = await this._toastService.mostrarConfirmacion(
-      '¿Estás seguro que deseas editar esta facultad?',
+      '¿Estás seguro que deseas editar esta Asignatura?',
       5000 
     );
     if (confirmacion) {
-      this.Openpopup(code, 'Editar Facultad', Facultad_PopupComponent);
+      this.Openpopup(code, 'Editar Asignatura', AsignaturaPopupComponent);
     } else{
       this._toastService.mostrarInfo('Accion editar cancelada', 'Información', 3000);
     }
   }
 
-  async eliminarFacultad(code: any)
+  async eliminarAsignatura(code: any)
   {
     const confirmacion = await this._toastService.mostrarConfirmacion(
-      '¿Estás seguro que deseas deshabilitar esta facultad?',
+      '¿Estás seguro que deseas deshabilitar esta Asignatura?',
       7000
   );
   if (confirmacion) {
-      this.fService.deshabilitarFacultad(code).subscribe((res) => {
+      this.aService.deshabilitarAsignatura(code).subscribe((res) => {
           this._toastService.mostrarExito(
-              'Facultad deshabilitada correctamente.',
+              'Asignatura deshabilitada correctamente.',
               'Aprobado',
               2000
           );
-          this.cargarTablaFacultades();
+          this.cargarTablaAsignatura();
       }
       );
   } else {
@@ -83,22 +82,23 @@ export class FacultadComponent {
   }
   }
 
-  async activarFacultad(code: any){
+  async activarAsignatura(code: any){
     const confirmacion = await this._toastService.mostrarConfirmacion(
-      '¿Estás seguro que deseas activar esta facultad?',
+      '¿Estás seguro que deseas activar esta Asignatura?',
       7000
   );
   if (confirmacion) {
-      this.fService.activarFacultad(code).subscribe((res) => {
+      this.aService.activarAsignatura(code).subscribe((res) => {
           this._toastService.mostrarExito(
-              'Facultad activada correctamente.',
+              'Asignatura activada correctamente.',
               'Aprobado',
               2000
           );
-          this.cargarTablaFacultades();
+          this.cargarTablaAsignatura();
       }
       );
-  } else {
+  } else 
+  {
       this._toastService.mostrarInfo('Accion activar cancelada', 'Información', 3000);
   }
 
@@ -116,7 +116,7 @@ export class FacultadComponent {
     });
     _popup.afterClosed().subscribe((item) => {
       // console.log(item)
-      this.cargarTablaFacultades();
+      this.cargarTablaAsignatura();
     });
   }
 }

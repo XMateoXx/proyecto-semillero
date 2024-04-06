@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Asignatura } from '../Model/Asignatura';
+import { Asignatura } from '../../../Model/Asignatura';
 import { Observable } from 'rxjs';
-import { LoginService } from './auth/login.service';
+import { LoginService } from '../../../service/auth/login.service';
 
 @Injectable({
   providedIn: 'root'

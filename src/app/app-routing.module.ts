@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { CardComponent } from './component/card/card.component';
-import { TableComponent } from './component/table/table.component';
+import { TableComponent } from './modulos/modulo-usuario/table.component';
 import { MenubarComponent } from './component/menubar/menubar.component';
 import { LoginComponent } from './component/auth/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -11,9 +11,9 @@ import { ModuloCargoComponent } from './modulos/modulo-cargo/modulo-cargo.compon
 import { ModuloTipoEvaluacionComponent } from './modulos/modulo-tipo-evaluacion/modulo-tipo-evaluacion.component';
 import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/modulo-comportamiento.component';
 import { ModuloCompetenciaComponent } from './modulos/modulo-competencia/modulo-competencia.component';
-import { FacultadComponent } from './component/facultad/facultad.component';
-import { ProgramaComponent } from './component/programa/programa.component';
-import { AsignaturaComponent } from './component/asignatura/asignatura.component';
+import { FacultadComponent } from './modulos/modulo-facultad/facultad.component'; 
+import { ProgramaComponent } from './modulos/modulo-programa/programa.component'; 
+import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component'; 
 import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
 
 

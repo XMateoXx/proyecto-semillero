@@ -1,15 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginService } from './auth/login.service';
 import { Observable } from 'rxjs';
-import { Programa } from '../Model/Programa';
+import { Programa } from 'src/app/Model/Programa';
+import { LoginService } from 'src/app/service/auth/login.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProgramaService {
   private _baseURL = 'http://localhost:8000';
-  constructor(private http: HttpClient, private _loginService: LoginService) {}
+  constructor(private http: HttpClient, private _loginService: LoginService) { }
 
   obtenerProgramas(): Observable<Programa[]> {
     let headers = this.header_format();
