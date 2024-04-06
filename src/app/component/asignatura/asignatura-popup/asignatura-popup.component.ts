@@ -15,7 +15,8 @@ import {
 import { ToastService } from 'src/app/service/toast.service';
 import { ProgramaService } from 'src/app/service/programa.service';
 import { Facultad } from 'src/app/Model/Facultad';
-import { FacultadService } from 'src/app/service/facultad.service';
+import { AsignaturaService } from 'src/app/service/asignatura.service';
+import { Asignatura } from 'src/app/Model/Asignatura';
 
 @Component({
   selector: 'app-asignatura-popup',
@@ -26,9 +27,10 @@ export class AsignaturaPopupComponent implements OnInit {
   submit = false;
   hide = true;
   lista_facultad!: Facultad[];
+  lista_asignatura!: Asignatura[];
   inputdata: any;
-  idPrograma: any = null;
-  dataPrograma!: Programa;
+  idAsignatura: any = null;
+  dataAsignatura!: Asignatura;
   editdata: any = null;
   closemessage = 'closed using directive';
 
@@ -37,10 +39,10 @@ export class AsignaturaPopupComponent implements OnInit {
     private ref: MatDialogRef<AsignaturaPopupComponent>,
     private formBuilder: FormBuilder,
     private service: ProgramaService,
-    private _servicioFacultad: FacultadService,
+    private _servicioAsignatura: AsignaturaService,
     private _servicioToast: ToastService
   ) {
-    this.cargar_facultades();
+    this.cargar_asignatura();
   }
 
 
@@ -51,21 +53,21 @@ export class AsignaturaPopupComponent implements OnInit {
     }
   }
 
-  cargar_facultades() {
-    this._servicioFacultad.GetFacultadActivo().subscribe((res) => {
-      this.lista_facultad = res;
+  cargar_asignatura() {
+    this._servicioAsignatura.obtenerAsignaturaActivo().subscribe((res) => {
+      this.lista_asignatura = res;
     });
   }
 
   setpopupdata(code: any) {
-    this.service.obtenerProgramaByCode(code).subscribe((item) => {
+    this._servicioAsignatura.obtenerAsignaturaByCode(code).subscribe((item) => {
       console.log(item);
-      this.idPrograma = code;
+      this.idAsignatura = code;
       this.editdata = item;
       this.myform.setValue({
         nombre: this.editdata.nombre,
         descripcion: this.editdata.descripcion,
-        idfacultad: this.editdata.idfacultad,
+        codigo: this.editdata.codigo,
       });
     });
   }
@@ -77,24 +79,24 @@ export class AsignaturaPopupComponent implements OnInit {
   myform = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    idfacultad: new FormControl('', [Validators.required]),
+    codigo: new FormControl('', [Validators.required]),
   });
 
   get f(): { [key: string]: AbstractControl } {
     return this.myform.controls;
   }
 
-  guardarPrograma() {
+  guardarAsignatura() {
     this.submit = true;
     if (this.myform.valid){
       if (this.editdata != null) {
-        this.dataPrograma = {
-          id: this.idPrograma,
+        this.dataAsignatura = {
+          id: this.idAsignatura,
           nombre: this.myform.value.nombre!,
           descripcion: this.myform.value.descripcion!,
-          idfacultad: this.myform.value.idfacultad!,
+          codigo: this.myform.value.codigo!,
         };
-        this.service.actualizarPrograma(this.dataPrograma).subscribe({
+        this._servicioAsignatura.actualizarAsignatura(this.dataAsignatura).subscribe({
           next: (response) => {
             this._servicioToast.mostrarExito(
               'Actualizado correctamente.',
@@ -114,7 +116,7 @@ export class AsignaturaPopupComponent implements OnInit {
           },
         });
       } else {
-        this.service.guardarPrograma(this.myform.value).subscribe({
+        this._servicioAsignatura.guardarAsignatura(this.myform.value).subscribe({
           next: (response) => {
             this._servicioToast.mostrarExito(
               'Registrado correctamente.',
@@ -141,12 +143,12 @@ export class AsignaturaPopupComponent implements OnInit {
     this.submit = false;
     this.myform.reset();
     this.editdata = null;
-    this.idPrograma = null;
-    this.dataPrograma = {
-      id: 0,
+    this.idAsignatura = null;
+    this.dataAsignatura = {
+      id: "0",
       nombre: '',
       descripcion: '',
-      idfacultad: '',
+      codigo: '',
     };
   }
 

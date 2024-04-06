@@ -2,7 +2,7 @@ export interface Cargo {
     id: string;
     nombre: string;
     descripcion: string;
-    idnivel: number;
+    idnivel: string;
 }
 
 export interface Cargos {

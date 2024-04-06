@@ -48,13 +48,13 @@ export class FormCargoComponent implements OnInit{
 
   setpopupdata(code: any) {
     this.service.GetCargobycode(code).subscribe((item) => {
+      console.log(item);
       this.idCargo = code;
-      // console.log(item)
       this.editdata = item;
       this.myform.setValue({
         nombre: this.editdata.nombre,
         descripcion: this.editdata.descripcion,
-        idnivel: this.editdata.idnivel,
+        idnivel: this.editdata.idnivel
       });
     });
   }
@@ -81,7 +81,7 @@ export class FormCargoComponent implements OnInit{
           id: this.idCargo,
           nombre: this.myform.value.nombre!,
           descripcion: this.myform.value.descripcion!,
-          idnivel: Number(this.myform.value.idnivel!)
+          idnivel: this.myform.value.idnivel!
         }
         this.service.actualizarCargo(this.dataCargo).subscribe({
           next: (response) => {
@@ -122,10 +122,10 @@ export class FormCargoComponent implements OnInit{
     this.editdata = null;
     this.idCargo = null;
     this.dataCargo = {
-      id: "0",
-      nombre: "",
-      descripcion: "",
-      idnivel: 0,
+      id: '',
+      nombre: '',
+      descripcion: '',
+      idnivel: '',
     };
   }
   
