@@ -13,38 +13,35 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastService } from 'src/app/service/toast.service';
-import { ProgramaService } from 'src/app/service/programa.service';
 import { Facultad } from 'src/app/Model/Facultad';
-import { AsignaturaService } from 'src/app/service/asignatura.service';
-import { Asignatura } from 'src/app/Model/Asignatura';
+import { FacultadService } from 'src/app/modulos/modulo-facultad/service/facultad.service';
+import { ProgramaService } from '../service/ProgramaService';
 
 @Component({
-  selector: 'app-asignatura-popup',
-  templateUrl: './asignatura-popup.component.html',
-  styleUrls: ['./asignatura-popup.component.css']
+  selector: 'app-programa-popup',
+  templateUrl: './programa-popup.component.html',
+  styleUrls: ['./programa-popup.component.css'],
 })
-export class AsignaturaPopupComponent implements OnInit {
+export class ProgramaPopupComponent implements OnInit {
   submit = false;
   hide = true;
   lista_facultad!: Facultad[];
-  lista_asignatura!: Asignatura[];
   inputdata: any;
-  idAsignatura: any = null;
-  dataAsignatura!: Asignatura;
+  idPrograma: any = null;
+  dataPrograma!: Programa;
   editdata: any = null;
   closemessage = 'closed using directive';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ref: MatDialogRef<AsignaturaPopupComponent>,
+    private ref: MatDialogRef<ProgramaPopupComponent>,
     private formBuilder: FormBuilder,
     private service: ProgramaService,
-    private _servicioAsignatura: AsignaturaService,
+    private _servicioFacultad: FacultadService,
     private _servicioToast: ToastService
   ) {
-    this.cargar_asignatura();
+    this.cargar_facultades();
   }
-
 
   ngOnInit(): void {
     this.inputdata = this.data;
@@ -53,21 +50,21 @@ export class AsignaturaPopupComponent implements OnInit {
     }
   }
 
-  cargar_asignatura() {
-    this._servicioAsignatura.obtenerAsignaturaActivo().subscribe((res) => {
-      this.lista_asignatura = res;
+  cargar_facultades() {
+    this._servicioFacultad.GetFacultadActivo().subscribe((res) => {
+      this.lista_facultad = res;
     });
   }
 
   setpopupdata(code: any) {
-    this._servicioAsignatura.obtenerAsignaturaByCode(code).subscribe((item) => {
+    this.service.obtenerProgramaByCode(code).subscribe((item) => {
       console.log(item);
-      this.idAsignatura = code;
+      this.idPrograma = code;
       this.editdata = item;
       this.myform.setValue({
         nombre: this.editdata.nombre,
         descripcion: this.editdata.descripcion,
-        codigo: this.editdata.codigo,
+        idfacultad: this.editdata.idfacultad,
       });
     });
   }
@@ -79,24 +76,24 @@ export class AsignaturaPopupComponent implements OnInit {
   myform = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    codigo: new FormControl('', [Validators.required]),
+    idfacultad: new FormControl('', [Validators.required]),
   });
 
   get f(): { [key: string]: AbstractControl } {
     return this.myform.controls;
   }
 
-  guardarAsignatura() {
+  guardarPrograma() {
     this.submit = true;
     if (this.myform.valid){
       if (this.editdata != null) {
-        this.dataAsignatura = {
-          id: this.idAsignatura,
+        this.dataPrograma = {
+          id: this.idPrograma,
           nombre: this.myform.value.nombre!,
           descripcion: this.myform.value.descripcion!,
-          codigo: this.myform.value.codigo!,
+          idfacultad: this.myform.value.idfacultad!,
         };
-        this._servicioAsignatura.actualizarAsignatura(this.dataAsignatura).subscribe({
+        this.service.actualizarPrograma(this.dataPrograma).subscribe({
           next: (response) => {
             this._servicioToast.mostrarExito(
               'Actualizado correctamente.',
@@ -116,7 +113,7 @@ export class AsignaturaPopupComponent implements OnInit {
           },
         });
       } else {
-        this._servicioAsignatura.guardarAsignatura(this.myform.value).subscribe({
+        this.service.guardarPrograma(this.myform.value).subscribe({
           next: (response) => {
             this._servicioToast.mostrarExito(
               'Registrado correctamente.',
@@ -143,14 +140,12 @@ export class AsignaturaPopupComponent implements OnInit {
     this.submit = false;
     this.myform.reset();
     this.editdata = null;
-    this.idAsignatura = null;
-    this.dataAsignatura = {
-      id: "0",
+    this.idPrograma = null;
+    this.dataPrograma = {
+      id: 0,
       nombre: '',
       descripcion: '',
-      codigo: '',
+      idfacultad: '',
     };
   }
-
-
 }

@@ -13,7 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastService } from 'src/app/service/toast.service';
-import { FacultadService } from 'src/app/service/facultad.service';
+import { FacultadService } from 'src/app/modulos/modulo-facultad/service/facultad.service';
 
 @Component({
   selector: 'app-popup',

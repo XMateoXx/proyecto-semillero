@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ProgramaService } from 'src/app/service/programa.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Programa } from 'src/app/Model/Programa';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { ToastService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProgramaPopupComponent } from './programa-popup/programa-popup.component';
+import { ProgramaService } from './service/ProgramaService';
 
 @Component({
   selector: 'app-programa',
