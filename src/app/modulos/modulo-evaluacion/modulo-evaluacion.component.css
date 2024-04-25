@@ -1,0 +1,27 @@
+.pregunta-container {
+    margin-bottom: 20px; /* Espacio entre cada pregunta */
+}
+
+.respuesta-select {
+    /* Estilos para el select, puedes personalizarlo según tus necesidades */
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.radio-options {
+    display: flex;
+    flex-direction: column; /* Para que los botones de radio estén uno debajo del otro */
+}
+
+.radio-options label {
+    margin-bottom: 5px; /* Espacio entre cada botón de radio */
+}
+
+.radio-options input[type="radio"] {
+    /* Estilos para los botones de radio, puedes personalizarlos según tus necesidades */
+    margin-right: 5px; /* Espacio entre el botón de radio y el texto */
+}
+
