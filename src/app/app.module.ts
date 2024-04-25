@@ -41,6 +41,11 @@ import { ProgramaComponent } from './modulos/modulo-programa/programa.component'
 import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component'; 
 
 
+/////////////// 
+import { ModuloEvaluacionComponent } from './modulos/modulo-evaluacion/modulo-evaluacion.component'; 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +73,10 @@ import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.comp
     Facultad_PopupComponent,
     ProgramaPopupComponent,
     AsignaturaPopupComponent,
-    ModuloGrupoComponent
+    ModuloGrupoComponent,
+
+    /////
+    ModuloEvaluacionComponent
   ],
   imports: [
     CommonModule,

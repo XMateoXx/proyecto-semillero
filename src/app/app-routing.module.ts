@@ -16,6 +16,9 @@ import { ProgramaComponent } from './modulos/modulo-programa/programa.component'
 import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component'; 
 import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
 
+/////////////////////
+import { ModuloEvaluacionComponent } from './modulos/modulo-evaluacion/modulo-evaluacion.component';
+
 
 
 const routes: Routes = [
@@ -34,6 +37,11 @@ const routes: Routes = [
   { path: 'modulo_competencia', component: ModuloCompetenciaComponent },
   { path: 'modulo_comportamiento', component: ModuloComportamientoComponent },
   { path: 'modulo_grupo', component: ModuloGrupoComponent },
+
+  ///////
+  { path: 'evaluacion_docente', component: ModuloEvaluacionComponent },
+
+
   { path: '**', redirectTo: '/login' }
 ];
 
