@@ -31,7 +31,7 @@ import { FormCompetenciaComponent } from './modulos/modulo-competencia/component
 import { ModuloComportamientoComponent } from './modulos/modulo-comportamiento/modulo-comportamiento.component';
 import { FormComportamientoComponent } from './modulos/modulo-comportamiento/component/form-comportamiento/form-comportamiento.component';
 import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
-
+import { ModuloEvaluacionComponent } from './modulos/modulo-evaluacion/modulo-evaluacion.component';
 // Corregir: Colocar dentro de la carpeta de modulos
 import { Facultad_PopupComponent } from './modulos/modulo-facultad/popup/facultad-popup.component'; 
 import { ProgramaPopupComponent } from './modulos/modulo-programa/programa-popup/programa-popup.component';
@@ -70,7 +70,8 @@ import { GrupoPopupComponent } from './modulos/modulo-grupo/popup/grupo-popup.co
     ProgramaPopupComponent,
     AsignaturaPopupComponent,
     ModuloGrupoComponent,
-    GrupoPopupComponent
+    GrupoPopupComponent,
+    ModuloEvaluacionComponent
   ],
   imports: [
     CommonModule,
