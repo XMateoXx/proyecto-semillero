@@ -1,19 +1,53 @@
-
-  <app-menubar>
-    <div *ngFor="let pregunta of preguntas">
-      <h3>{{ pregunta.pregunta }}</h3>
-      <div class="radio-options">
-          <label><input type="radio" name="{{ pregunta.id }}" value="muy_satisfecho"> Muy Bueno</label>
-          <label><input type="radio" name="{{ pregunta.id }}" value="satisfecho"> Bueno</label>
-          <label><input type="radio" name="{{ pregunta.id }}" value="regular"> Regular</label>
-          <label><input type="radio" name="{{ pregunta.id }}" value="malo"> Malo</label>
-          <label><input type="radio" name="{{ pregunta.id }}" value="no_satisfecho"> Muy malo</label>
+<!-- <app-menubar>
+  <mat-card>
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let pregunta of preguntas">
+        <h3>{{ pregunta.pregunta }}</h3>
+        <div class="radio-options">
+            <label><input type="radio" name="{{ pregunta.id }}" value="muy_bueno"> Muy Bueno</label>
+            <label><input type="radio" name="{{ pregunta.id }}" value="bueno"> Bueno</label>
+            <label><input type="radio" name="{{ pregunta.id }}" value="regular"> Regular</label>
+            <label><input type="radio" name="{{ pregunta.id }}" value="malo"> Malo</label>
+            <label><input type="radio" name="{{ pregunta.id }}" value="muy_malo"> Muy malo</label>
+        </div>
       </div>
-    </div>
-  </app-menubar>
-
-
-
-
-
-
+    </mat-card-content>
+    <br />
+    <mat-card-footer>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-footer>
+  </mat-card>
+</app-menubar> -->
+<app-menubar-docente>
+  <mat-card>
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>Auto Evaluacion Docente</h1>
+      <div *ngFor="let pregunta of preguntas">
+        <ng-container *ngIf="pregunta.idnivel === 2">
+          <h3>{{ pregunta.pregunta }}</h3>
+                  <div class="radio-options">
+                  <label><input type="radio" name="{{ pregunta.id }}" value="muy_bueno"> Muy Bueno</label>
+                  <label><input type="radio" name="{{ pregunta.id }}" value="bueno"> Bueno</label>
+                  <label><input type="radio" name="{{ pregunta.id }}" value="regular"> Regular</label>
+                  <label><input type="radio" name="{{ pregunta.id }}" value="malo"> Malo</label>
+                  <label><input type="radio" name="{{ pregunta.id }}" value="muy_malo"> Muy malo</label>
+              </div>
+        </ng-container>
+      </div>
+    </mat-card-content>
+    <br />
+    <mat-card-footer>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-footer>
+  </mat-card>
+</app-menubar-docente>
