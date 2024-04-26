@@ -1,0 +1,19 @@
+
+  <app-menubar>
+    <div *ngFor="let pregunta of preguntas">
+      <h3>{{ pregunta.pregunta }}</h3>
+      <div class="radio-options">
+          <label><input type="radio" name="{{ pregunta.id }}" value="muy_satisfecho"> Muy Bueno</label>
+          <label><input type="radio" name="{{ pregunta.id }}" value="satisfecho"> Bueno</label>
+          <label><input type="radio" name="{{ pregunta.id }}" value="regular"> Regular</label>
+          <label><input type="radio" name="{{ pregunta.id }}" value="malo"> Malo</label>
+          <label><input type="radio" name="{{ pregunta.id }}" value="no_satisfecho"> Muy malo</label>
+      </div>
+    </div>
+  </app-menubar>
+
+
+
+
+
+
