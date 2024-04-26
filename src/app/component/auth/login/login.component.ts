@@ -52,11 +52,16 @@ export class LoginComponent implements OnInit{
       this.loginError="";
       this.loginServices.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response) => {
-          this.loginServices.setJWT(response);
+          this.loginServices.setJWT(response);          
           let nombrecompleto = this.loginServices.currentUserData.value.nombre + " " + this.loginServices.currentUserData.value.apellido;
           this._toastServices.mostrarExito("Bienvenido: "+nombrecompleto , "Exito", 2000);
           console.info("Login completo");
-          this.router.navigateByUrl('/principal');
+          
+          if (this.loginServices.currentUserData.value.perfil == 3) {
+            this.router.navigateByUrl('/evaluacion_docente');
+          } else {
+            this.router.navigateByUrl('/principal');
+          }
           this.loginForm.reset();
         },
         error: async (errorData) => {

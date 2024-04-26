@@ -1,3 +1,10 @@
+mat-card{
+    margin: 2%;
+}
+
+h1{
+    margin: 1%;
+}
 .pregunta-container {
     margin-bottom: 20px; /* Espacio entre cada pregunta */
 }
@@ -24,4 +31,3 @@
     /* Estilos para los botones de radio, puedes personalizarlos según tus necesidades */
     margin-right: 5px; /* Espacio entre el botón de radio y el texto */
 }
-

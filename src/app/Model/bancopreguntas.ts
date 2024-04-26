@@ -1,6 +1,6 @@
 export interface Bancopreguntas {
     id: string;
-    idnivel: string;
+    idnivel: number;
     idcomportamiento: string;
     pregunta: string;
 }

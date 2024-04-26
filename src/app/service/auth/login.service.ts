@@ -18,6 +18,7 @@ export class LoginService {
         tap( (userData: Users) => {
           this.currentUserData.next(userData);
           this.currentUserLoginOn.next(true);
+          // console.log(userData.perfil);
       
         }),
         catchError(this.handleError)
