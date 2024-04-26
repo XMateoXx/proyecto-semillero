@@ -7,6 +7,7 @@ import { ModuloGrupoService } from './service/modulo-grupo.service';
 import { Title } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
 import { Grupo } from 'src/app/Model/Grupo';
+import { GrupoPopupComponent } from './popup/grupo-popup.component';
 
 @Component({
   selector: 'app-modulo-grupo',
@@ -47,7 +48,7 @@ export class ModuloGrupoComponent {
   }
 
   agregarGrupo(){
-    this.Openpopup(0, "Agregar Grupo", ModuloGrupoComponent);
+    this.Openpopup(0, "Agregar Grupo", GrupoPopupComponent);
   }
 
   async editarGrupo(code: any){

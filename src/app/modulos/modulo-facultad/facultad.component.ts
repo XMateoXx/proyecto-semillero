@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './facultad.component.html',
   styleUrls: ['./facultad.component.css']
 })
-export class FacultadComponent {
+export class FacultadComponent{
   fdataSource: any;
 
   displayedColumns: string[] = [

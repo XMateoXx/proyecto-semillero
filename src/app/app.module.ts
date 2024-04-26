@@ -38,7 +38,8 @@ import { ProgramaPopupComponent } from './modulos/modulo-programa/programa-popup
 import { AsignaturaPopupComponent } from './modulos/modulo-asignatura/asignatura-popup/asignatura-popup.component'; 
 import { FacultadComponent } from './modulos/modulo-facultad/facultad.component'; 
 import { ProgramaComponent } from './modulos/modulo-programa/programa.component'; 
-import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component'; 
+import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component';
+import { GrupoPopupComponent } from './modulos/modulo-grupo/popup/grupo-popup.component'; 
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.comp
     Facultad_PopupComponent,
     ProgramaPopupComponent,
     AsignaturaPopupComponent,
-    ModuloGrupoComponent
+    ModuloGrupoComponent,
+    GrupoPopupComponent
   ],
   imports: [
     CommonModule,
