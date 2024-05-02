@@ -17,6 +17,7 @@ import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.comp
 import { ModuloGrupoComponent } from './modulos/modulo-grupo/modulo-grupo.component';
 
 import { ModuloEvaluacionComponent } from './modulos/modulo-evaluacion/modulo-evaluacion.component';
+import { ModuloBancoPreguntaComponent } from './modulos/modulo-banco-pregunta/modulo-banco-pregunta.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'modulo_comportamiento', component: ModuloComportamientoComponent },
   { path: 'modulo_grupo', component: ModuloGrupoComponent },
   { path: 'evaluacion_docente', component: ModuloEvaluacionComponent },
+  { path: 'banco_pregunta', component: ModuloBancoPreguntaComponent },
 
 
   { path: '**', redirectTo: '/login' }

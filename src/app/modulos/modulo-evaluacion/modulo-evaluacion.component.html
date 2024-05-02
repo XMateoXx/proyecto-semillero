@@ -30,7 +30,7 @@
     <mat-card-content>
       <h1>Auto Evaluacion Docente</h1>
       <div *ngFor="let pregunta of preguntas">
-        <ng-container *ngIf="pregunta.idnivel === 2">
+        <ng-container *ngIf="pregunta.idnivel.toString() == 'Academico'">
           <h3>{{ pregunta.pregunta }}</h3>
                   <div class="radio-options">
                   <label><input type="radio" name="{{ pregunta.id }}" value="muy_bueno"> Muy Bueno</label>
@@ -49,5 +49,14 @@
         showFirstLastButtons
       ></mat-paginator>
     </mat-card-footer>
+    <button
+          style="position: relative;
+          top: 40px; width: 120px;"
+          (click)="agregarEncuesta()"
+          mat-raised-button
+          color="primary"
+        >
+          Enviar
+        </button>
   </mat-card>
 </app-menubar-docente>

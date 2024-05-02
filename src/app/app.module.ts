@@ -40,7 +40,9 @@ import { FacultadComponent } from './modulos/modulo-facultad/facultad.component'
 import { ProgramaComponent } from './modulos/modulo-programa/programa.component'; 
 import { AsignaturaComponent } from './modulos/modulo-asignatura/asignatura.component';
 import { GrupoPopupComponent } from './modulos/modulo-grupo/popup/grupo-popup.component';
-import { MenubarDocenteComponent } from './modulos/modulo-evaluacion/component/menubar-docente/menubar-docente.component'; 
+import { MenubarDocenteComponent } from './modulos/modulo-evaluacion/component/menubar-docente/menubar-docente.component';
+import { ModuloBancoPreguntaComponent } from './modulos/modulo-banco-pregunta/modulo-banco-pregunta.component';
+import { FormBancoComponent } from './modulos/modulo-banco-pregunta/component/form-banco/form-banco.component'; 
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { MenubarDocenteComponent } from './modulos/modulo-evaluacion/component/m
     ModuloGrupoComponent,
     GrupoPopupComponent,
     ModuloEvaluacionComponent,
-    MenubarDocenteComponent
+    MenubarDocenteComponent,
+    ModuloBancoPreguntaComponent,
+    FormBancoComponent
   ],
   imports: [
     CommonModule,
