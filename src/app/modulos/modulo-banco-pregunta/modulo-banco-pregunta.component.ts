@@ -81,43 +81,43 @@ export class ModuloBancoPreguntaComponent {
       }
   }
 
-  // async deshabilitarBancopreguntas(id: any) {
-  //     const confirmacion = await this._toastServices.mostrarConfirmacion(
-  //         '¿Estás seguro que deseas deshabilitar este Bancopreguntas?',
-  //         7000
-  //     );
-  //     if (confirmacion) {
-  //         this.service.deshabilitarBancopreguntas(id).subscribe((res) => {
-  //             this._toastServices.mostrarExito(
-  //                 'Bancopreguntas deshabilitado correctamente.',
-  //                 'Aprobado',
-  //                 2000
-  //             );
-  //             this.loadBancopreguntas();
-  //         }
-  //         );
-  //     } else {
-  //         this._toastServices.mostrarInfo('Accion deshabilitar cancelada', 'Información', 3000);
-  //     }
-  // }
+  async deshabilitarBancopregunta(id: any) {
+      const confirmacion = await this._toastServices.mostrarConfirmacion(
+          '¿Estás seguro que deseas deshabilitar este Bancopreguntas?',
+          7000
+      );
+      if (confirmacion) {
+          this.service.deshabilitarBancopreguntas(id).subscribe((res) => {
+              this._toastServices.mostrarExito(
+                  'Bancopreguntas deshabilitado correctamente.',
+                  'Aprobado',
+                  2000
+              );
+              this.loadBancopreguntas();
+          }
+          );
+      } else {
+          this._toastServices.mostrarInfo('Accion deshabilitar cancelada', 'Información', 3000);
+      }
+  }
 
-  // async activarBancopreguntas(id: any) {
-  //     const confirmacion = await this._toastServices.mostrarConfirmacion(
-  //         '¿Estás seguro que deseas activar este Bancopreguntas?',
-  //         7000
-  //     );
-  //     if (confirmacion) {
-  //         this.service.activarBancopreguntas(id).subscribe((res) => {
-  //             this._toastServices.mostrarExito(
-  //                 'Bancopreguntas activado correctamente.',
-  //                 'Aprobado',
-  //                 2000
-  //             );
-  //             this.loadBancopreguntas();
-  //         }
-  //         );
-  //     } else {
-  //         this._toastServices.mostrarInfo('Accion activar cancelada', 'Información', 3000);
-  //     }
-  // }
+  async activarBancopregunta(id: any) {
+      const confirmacion = await this._toastServices.mostrarConfirmacion(
+          '¿Estás seguro que deseas activar este Bancopreguntas?',
+          7000
+      );
+      if (confirmacion) {
+          this.service.activarBancopreguntas(id).subscribe((res) => {
+              this._toastServices.mostrarExito(
+                  'Bancopreguntas activado correctamente.',
+                  'Aprobado',
+                  2000
+              );
+              this.loadBancopreguntas();
+          }
+          );
+      } else {
+          this._toastServices.mostrarInfo('Accion activar cancelada', 'Información', 3000);
+      }
+  }
 }
