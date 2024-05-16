@@ -27,7 +27,7 @@
   
           <ng-container matColumnDef="idnivel">
             <th mat-sort-header mat-header-cell *matHeaderCellDef>Nivel</th>
-            <td mat-cell *matCellDef="let element">{{ element.idnivel }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.nombre_nivel }}</td>
           </ng-container>
   
           <ng-container matColumnDef="idcomportamiento">
@@ -47,7 +47,7 @@
                 <span class="activo">Activo</span>
               </ng-container>
               <ng-template #inactivoTemplate>
-                <span class="activo">Activo</span>
+                <span class="inactivo">Inactivo</span>
               </ng-template>
             </td>
           </ng-container>
@@ -57,22 +57,22 @@
             <td mat-cell *matCellDef="let element" class="action">
               <button
                 (click)="editBancopreguntas(element.id)"
-                matTooltip="Editar Cargo"
+                matTooltip="Editar Banco Pregunta"
                 color="primary"
               ><mat-icon>edit</mat-icon></button>
-              <!-- <button
+              <button
               *ngIf="(element.estado) == 1"
-                (click)="deshabilitarBancoPreguntas(element.id)"
+                (click)="deshabilitarBancopregunta(element.id)"
                 matTooltip="Deshabilitar Cargo"
                 color="warn"
-              ><mat-icon>delete</mat-icon></button> -->
-  
-              <!-- <button
+              ><mat-icon>delete</mat-icon></button>
+                  
+              <button
               *ngIf="(element.estado) == 0"
-              (click)="activarBancoPregunta(element.id)"
+              (click)="activarBancopregunta(element.id)"
               matTooltip="Activar Cargo"
               color="warn"
-            ><mat-icon>cached</mat-icon></button> -->
+            ><mat-icon>cached</mat-icon></button>
             </td>
           </ng-container>
   

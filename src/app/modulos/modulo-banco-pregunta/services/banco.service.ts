@@ -50,23 +50,23 @@ export class BancoService {
     );
   }
 
-  // deshabilitarBancopreguntas(id: any) {
-  //   let headers = this.header_format();
-  //   return this.http.put(
-  //     `${this._baseURL}/deshabilitar_Bancopreguntas/` + id,
-  //     { Bancopreguntas_id: id },
-  //     { headers }
-  //   );
-  // }
+  deshabilitarBancopreguntas(id: any) {
+    let headers = this.header_format();
+    return this.http.put(
+      `${this._baseURL}/deshabilitar_bancopregunta/` + id,
+      { Bancopreguntas_id: id },
+      { headers }
+    );
+  }
 
-  // activarBancopreguntas(id: any) {
-  //   let headers = this.header_format();
-  //   return this.http.put(
-  //     `${this._baseURL}/activar_Bancopreguntas/` + id,
-  //     { Bancopreguntas_id: id },
-  //     { headers }
-  //   );
-  // }
+  activarBancopreguntas(id: any) {
+    let headers = this.header_format();
+    return this.http.put(
+      `${this._baseURL}/activar_bancopregunta/` + id,
+      { Bancopreguntas_id: id },
+      { headers }
+    );
+  }
 
   header_format() {
     return new HttpHeaders().set(
