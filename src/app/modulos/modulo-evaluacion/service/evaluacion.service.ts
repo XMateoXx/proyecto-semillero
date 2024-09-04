@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Bancopreguntas } from '../../../Model/bancopreguntas';
+import { FiltroBancopreguntas, MaxBancopreguntas } from '../../../Model/bancopreguntas';
 import { LoginService } from '../../../service/auth/login.service';
 
 @Injectable({
@@ -11,12 +11,22 @@ export class EvaluacionService {
     private _baseURL = 'http://localhost:8000';
     constructor(private http: HttpClient, private _loginService: LoginService) {}
 
-  obtenerPreguntas(): Observable<Bancopreguntas[]> {
+    //Usar interpolacion en las demas rutas y no colocar directamente el id
+    filtrarBancopreguntas(id: number): Observable<FiltroBancopreguntas[]> {
     let headers = this.header_format();
-    return this.http.get<Bancopreguntas[]>(`${this._baseURL}/obtener_bancopreguntas/`, {
+    return this.http.get<FiltroBancopreguntas[]>(`${this._baseURL}/filtrar_bancopreguntas/${id}`, {
+      headers,
+    }); 
+
+  }
+  //Hacer lo mismo que se hizo en filtraBancopreguntas
+  obtenerMaxBancopregunta(): Observable<MaxBancopreguntas> {
+    let headers = this.header_format();
+    return this.http.get<MaxBancopreguntas>(`${this._baseURL}/max_bancopreguntas/`, {
       headers,
     });
   }
+
 
   header_format() {
     return new HttpHeaders().set(
