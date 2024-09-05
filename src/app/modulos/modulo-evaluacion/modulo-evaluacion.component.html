@@ -1,38 +1,28 @@
 <app-menubar-docente>
   <mat-card>
-    <mat-card-header>
-    </mat-card-header>
+    <mat-card-header></mat-card-header>
     <mat-card-content>
-      <h1>Auto Evaluacion Docente</h1>
-      <!-- <h2 *ngIf="maxBancopregunta">Máximo Bancopregunta: {{ maxBancopregunta }}</h2> -->
-
-      <h2>Competencias basicas</h2>
+      <h1>Auto Evaluación Docente</h1>
+      <h2>Competencias básicas</h2>
       <div *ngIf="maxBancopregunta; else loading">
-        <div *ngFor="let i of [].constructor(maxBancopregunta); let idx = index">
-          
-          <h1>{{ getNombreComportamiento(idx + 1) }}</h1>
-          <!-- Resetea el contador al inicio de cada iteración principal -->
-          {{ resetCounter() }}
-          <div *ngFor="let pregunta of preguntas">
-            <ng-container *ngIf=" pregunta.idcomportamiento == idx + 1">
-              <h3>{{ incrementCounter() }}. {{ pregunta.pregunta }}</h3>
-              <div class="radio-options">
-                <label><input type="radio" name="{{ pregunta.id }}" value="siempre"> Siempre</label>
-                <label><input type="radio" name="{{ pregunta.id }}" value="casi_siempre"> Casi siempre</label>
-                <label><input type="radio" name="{{ pregunta.id }}" value="algunas_veces"> Algunas veces</label>
-                <label><input type="radio" name="{{ pregunta.id }}" value="pocas_veces"> Pocas veces</label>
-                <label><input type="radio" name="{{ pregunta.id }}" value="nunca"> Nunca</label>
-                <!-- <label><input type="radio" name="{{ pregunta.id }}" value="no_aplica"> No aplica</label> -->
-              </div>
-            </ng-container>
+        <div *ngFor="let idComportamiento of getKeys(groupedQuestions); let iComp = index">
+          <h1>{{ getNombreComportamiento(+idComportamiento) }}</h1>
+          <!-- Preguntas correspondientes al comportamiento actual -->
+          <div *ngFor="let pregunta of groupedQuestions[+idComportamiento]; let iPregunta = index">
+            <h3>{{ iPregunta + 1 }}. {{ pregunta.pregunta }}</h3>
+            <div class="radio-options">
+              <label><input type="radio" name="{{ pregunta.id }}" value="siempre"> Siempre</label>
+              <label><input type="radio" name="{{ pregunta.id }}" value="casi_siempre"> Casi siempre</label>
+              <label><input type="radio" name="{{ pregunta.id }}" value="algunas_veces"> Algunas veces</label>
+              <label><input type="radio" name="{{ pregunta.id }}" value="pocas_veces"> Pocas veces</label>
+              <label><input type="radio" name="{{ pregunta.id }}" value="nunca"> Nunca</label>
+            </div>
           </div>
         </div>
       </div>
       <ng-template #loading>
         <p>Cargando...</p>
       </ng-template>
-      
-      
     </mat-card-content>
     <br />
     <mat-card-footer>
@@ -42,13 +32,11 @@
       ></mat-paginator>
     </mat-card-footer>
     <button
-          style="position: relative;
-          top: 40px; width: 120px;"
-          (click)="agregarEncuesta()"
-          mat-raised-button
-          color="primary"
-        >
-          Enviar
-        </button>
+      style="position: relative; top: 40px; width: 120px;"
+      (click)="agregarEncuesta()"
+      mat-raised-button
+      color="primary">
+      Enviar
+    </button>
   </mat-card>
 </app-menubar-docente>

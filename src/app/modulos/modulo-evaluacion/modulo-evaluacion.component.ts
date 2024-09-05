@@ -28,6 +28,8 @@ export class ModuloEvaluacionComponent implements OnInit {
     this.evaluacionService.filtrarBancopreguntas(this.idnivel).subscribe(data => {
       this.preguntas = data;
       console.log(this.preguntas)
+    // Agrupa las preguntas después de obtenerlas
+    this.groupQuestionsByComportamiento();
     });
 
     // Obtiene el valor máximo de bancopregunta
@@ -35,6 +37,24 @@ export class ModuloEvaluacionComponent implements OnInit {
       this.maxBancopregunta = data.max_bancopregunta;
       console.log(this.maxBancopregunta); 
     });
+  }
+
+  groupedQuestions: { [key: number]: FiltroBancopreguntas[] } = {};
+
+  groupQuestionsByComportamiento(): void {
+    this.groupedQuestions = {}; // Reinicia las preguntas agrupadas
+    this.preguntas.forEach(pregunta => {
+      const idComportamiento = pregunta.idcomportamiento;
+      if (!this.groupedQuestions[idComportamiento]) {
+        this.groupedQuestions[idComportamiento] = [];
+      }
+      this.groupedQuestions[idComportamiento].push(pregunta);
+    });
+    console.log(this.groupedQuestions); // Verifica si se están agrupando bien
+  }
+
+  getKeys(obj: any): string[] {
+    return Object.keys(obj);
   }
 
   resetCounter() {
