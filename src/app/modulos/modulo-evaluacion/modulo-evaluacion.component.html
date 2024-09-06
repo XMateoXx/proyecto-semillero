@@ -1,9 +1,13 @@
 <app-menubar-docente>
+  
   <mat-card>
-    <mat-card-header></mat-card-header>
+    <mat-card-header>
+      <mat-card-title>AUTO EVALUACIÓN DOCENTE</mat-card-title>
+    </mat-card-header>
+    <br>
     <mat-card-content>
-      <h1>Auto Evaluación Docente</h1>
-      <h2>Competencias básicas</h2>
+      
+      <!-- <h2>Competencias básicas</h2> -->
       <div *ngIf="maxBancopregunta; else loading">
         <div *ngFor="let idComportamiento of getKeys(groupedQuestions); let iComp = index">
           <h1>{{ getNombreComportamiento(+idComportamiento) }}</h1>
@@ -21,22 +25,26 @@
         </div>
       </div>
       <ng-template #loading>
-        <p>Cargando...</p>
+        <p class="loading-message">Cargando...</p>
       </ng-template>
     </mat-card-content>
     <br />
     <mat-card-footer>
-      <mat-paginator
+      <!-- <mat-paginator
         [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
-      ></mat-paginator>
+      ></mat-paginator> -->
+
+       <div style="text-align: center; margin-top: 20px;">
+        <button
+          style="width: 120px;"
+          (click)="agregarEncuesta()"
+          mat-raised-button
+          color="primary">
+          Enviar
+        </button>
+      </div>
+
     </mat-card-footer>
-    <button
-      style="position: relative; top: 40px; width: 120px;"
-      (click)="agregarEncuesta()"
-      mat-raised-button
-      color="primary">
-      Enviar
-    </button>
   </mat-card>
 </app-menubar-docente>

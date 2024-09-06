@@ -1,24 +1,121 @@
-mat-card{
-    margin: 2%;
-}
+/* General Styling */
 
-h1{
-    margin: 1%;
-}
-.pregunta-container {
-    margin-bottom: 20px; /* Espacio entre cada pregunta */
-}
+/* FORMATO DEL CONTENEDOR DE LA EVALUACION */
+mat-card {
+    background-color: #fefefe;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    max-width: 750px;
+    margin: 20px auto;
+  }
 
-.respuesta-select {
-    /* Estilos para el select, puedes personalizarlo según tus necesidades */
+/* ESTILO DE LA LETRA DEL TITULO EVALUACION DOCENTE */
+mat-card-title {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+/* ESTILO DE LA CARD EVALUACION DOCENTE */
+  mat-card-header {
+    background-color: rgba(5,35,89,255);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    width: auto; /* Ajusta el ancho */
+    height: auto; /* O usa un valor fijo si lo prefieres */
+  }
+
+  /* Estilo de las etiquetas dentro de los botones de radio */
+  label {
+    color: black;
+    font-weight: 800;  
+  }
+
+  /* Estilo de los encabezados de nivel 1, 2 y 3 */
+  h1, h2, h3 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  h1 {
+    font-size: 26px;
+    color: white;  /* Texto en blanco */
+    text-align: center;  /* Centrado */
+    background-color: rgba(5,35,89,255);
     padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    font-weight: 800;
+    
+  }
+  
+  /* Radio Options */
+  .radio-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para cada opción de radio */
+  .radio-options label {
+    display: inline-block;
+    width: auto; /* Esto ajusta el ancho al contenido del texto */
+    padding: 10px 15px; /* Reduce el padding para hacer las opciones más pequeñas */
+    margin: 0 5px; /* Añade un poco de espacio horizontal entre las opciones */
+    background-color: #dde9f7;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Oculta el botón de radio real */
+  .radio-options input[type="radio"] {
+    display: none;
+  }
+  
+  /* Cambia el color de fondo al pasar el mouse sobre una opción de radio */
+  .radio-options label:hover {
+    background-color: #81b3eb;
+  }
+  
+  /* Cambia el color de fondo y el texto cuando una opción de radio está seleccionada */
+  .radio-options input[type="radio"]:checked + label {
+    background-color: #7c4dff;
+    color: white;
+  }
+  
+  /* Button */
+  /* Estilo del botón principal */
+  button[mat-raised-button] {
+    background-color: rgba(5,35,89,255);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 18px;
+    transition: all 0.4s ease;
+  }
 
-.radio-options {
+  /* Cambia el estilo del botón al pasar el mouse sobre él */
+  button[mat-raised-button]:hover {
+    background-color: #860026;
+    transform: scale(1.05);
+  }
+
+  .radio-options {
     display: flex;
     flex-direction: column; /* Para que los botones de radio estén uno debajo del otro */
 }
@@ -31,3 +128,23 @@ h1{
     /* Estilos para los botones de radio, puedes personalizarlos según tus necesidades */
     margin-right: 5px; /* Espacio entre el botón de radio y el texto */
 }
+  
+  /* Estilo para el mensaje de carga */
+.loading-message {
+    font-size: 18px;
+    font-weight: bold;
+    color: #860026; /* Cambia el color */
+    text-align: center; /* Centra el texto */
+    padding: 20px;
+    background-color: #f0f0f0; /* Fondo claro */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    animation: loadingAnimation 1s infinite; /* Animación de parpadeo */
+  }
+  
+  /* Animación de parpadeo para el mensaje de carga */
+  @keyframes loadingAnimation {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
