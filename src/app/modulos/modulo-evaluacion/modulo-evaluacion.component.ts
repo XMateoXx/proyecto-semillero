@@ -71,7 +71,7 @@ export class ModuloEvaluacionComponent implements OnInit {
   }
   agregarEncuesta(){
     this._servicioToast.mostrarExito(
-      'Encuesta guardada correctamente.',
+      'Auto evaluación guardada correctamente.',
       'Aprobado',
       2000
     );

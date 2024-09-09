@@ -15,13 +15,22 @@
           <div *ngFor="let pregunta of groupedQuestions[+idComportamiento]; let iPregunta = index">
             <h3>{{ iPregunta + 1 }}. {{ pregunta.pregunta }}</h3>
             <div class="radio-options">
-              <label><input type="radio" name="{{ pregunta.id }}" value="siempre"> Siempre</label>
-              <label><input type="radio" name="{{ pregunta.id }}" value="casi_siempre"> Casi siempre</label>
-              <label><input type="radio" name="{{ pregunta.id }}" value="algunas_veces"> Algunas veces</label>
-              <label><input type="radio" name="{{ pregunta.id }}" value="pocas_veces"> Pocas veces</label>
-              <label><input type="radio" name="{{ pregunta.id }}" value="nunca"> Nunca</label>
+              <input type="radio" id="siempre-{{ pregunta.id }}" name="{{ pregunta.id }}" value="siempre">
+              <label for="siempre-{{ pregunta.id }}">Siempre</label>
+              
+              <input type="radio" id="casi-siempre-{{ pregunta.id }}" name="{{ pregunta.id }}" value="casi_siempre">
+              <label for="casi-siempre-{{ pregunta.id }}">Casi siempre</label>
+              
+              <input type="radio" id="algunas-veces-{{ pregunta.id }}" name="{{ pregunta.id }}" value="algunas_veces">
+              <label for="algunas-veces-{{ pregunta.id }}">Algunas veces</label>
+              
+              <input type="radio" id="pocas-veces-{{ pregunta.id }}" name="{{ pregunta.id }}" value="pocas_veces">
+              <label for="pocas-veces-{{ pregunta.id }}">Pocas veces</label>
+              
+              <input type="radio" id="nunca-{{ pregunta.id }}" name="{{ pregunta.id }}" value="nunca">
+              <label for="nunca-{{ pregunta.id }}">Nunca</label>
             </div>
-          </div>
+          </div>          
         </div>
       </div>
       <ng-template #loading>
