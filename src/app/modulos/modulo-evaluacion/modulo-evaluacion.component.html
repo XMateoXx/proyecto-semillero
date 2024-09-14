@@ -1,36 +1,42 @@
 <app-menubar-docente>
-  
   <mat-card>
     <mat-card-header>
       <mat-card-title>AUTO EVALUACIÓN DOCENTE</mat-card-title>
     </mat-card-header>
     <br>
     <mat-card-content>
-      
-      <!-- <h2>Competencias básicas</h2> -->
       <div *ngIf="maxBancopregunta; else loading">
-        <div *ngFor="let idComportamiento of getKeys(groupedQuestions); let iComp = index">
-          <h1>{{ getNombreComportamiento(+idComportamiento) }}</h1>
-          <!-- Preguntas correspondientes al comportamiento actual -->
-          <div *ngFor="let pregunta of groupedQuestions[+idComportamiento]; let iPregunta = index">
-            <h3>{{ iPregunta + 1 }}. {{ pregunta.pregunta }}</h3>
+        <div *ngIf="subcompetenciasKeys.length > 0">
+          <h1>{{ getNombreComportamiento(+subcompetenciasKeys[currentPageIndex]) }}</h1>
+          
+          <div *ngFor="let pregunta of groupedQuestions[+subcompetenciasKeys[currentPageIndex]]; let NumPregunta = index">
+            <h3>{{ NumPregunta + 1 }}. {{ pregunta.pregunta }}</h3>
+
             <div class="radio-options">
-              <input type="radio" id="siempre-{{ pregunta.id }}" name="{{ pregunta.id }}" value="siempre">
+
+              <input type="radio" id="siempre-{{ pregunta.id }}" name="{{ pregunta.id }}" value="siempre"
+              (change)="onAnswerSelected(pregunta.id, 'siempre')" [checked]="isSelected(pregunta.id, 'siempre')">
               <label for="siempre-{{ pregunta.id }}">Siempre</label>
               
-              <input type="radio" id="casi-siempre-{{ pregunta.id }}" name="{{ pregunta.id }}" value="casi_siempre">
+              <input type="radio" id="casi-siempre-{{ pregunta.id }}" name="{{ pregunta.id }}" value="casi_siempre"
+              (change)="onAnswerSelected(pregunta.id, 'casi_siempre')" [checked]="isSelected(pregunta.id, 'casi_siempre')">
               <label for="casi-siempre-{{ pregunta.id }}">Casi siempre</label>
               
-              <input type="radio" id="algunas-veces-{{ pregunta.id }}" name="{{ pregunta.id }}" value="algunas_veces">
+              <input type="radio" id="algunas-veces-{{ pregunta.id }}" name="{{ pregunta.id }}" value="algunas_veces"
+              (change)="onAnswerSelected(pregunta.id, 'algunas_veces')" [checked]="isSelected(pregunta.id, 'algunas_veces')">
               <label for="algunas-veces-{{ pregunta.id }}">Algunas veces</label>
               
-              <input type="radio" id="pocas-veces-{{ pregunta.id }}" name="{{ pregunta.id }}" value="pocas_veces">
+              <input type="radio" id="pocas-veces-{{ pregunta.id }}" name="{{ pregunta.id }}" value="pocas_veces"
+              (change)="onAnswerSelected(pregunta.id, 'pocas_veces')" [checked]="isSelected(pregunta.id, 'pocas_veces')">
               <label for="pocas-veces-{{ pregunta.id }}">Pocas veces</label>
               
-              <input type="radio" id="nunca-{{ pregunta.id }}" name="{{ pregunta.id }}" value="nunca">
+              <input type="radio" id="nunca-{{ pregunta.id }}" name="{{ pregunta.id }}" value="nunca"
+              (change)="onAnswerSelected(pregunta.id, 'nunca')" [checked]="isSelected(pregunta.id, 'nunca')">
               <label for="nunca-{{ pregunta.id }}">Nunca</label>
+
             </div>
-          </div>          
+
+          </div>
         </div>
       </div>
       <ng-template #loading>
@@ -39,13 +45,27 @@
     </mat-card-content>
     <br />
     <mat-card-footer>
-      <!-- <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons
-      ></mat-paginator> -->
-
-       <div style="text-align: center; margin-top: 20px;">
+      <div style="text-align: center; margin-top: 20px;">
         <button
+          *ngIf="currentPageIndex > 0"
+          style="width: 120px; margin-right: 10px;"
+          (click)="goToPreviousPage()"
+          mat-raised-button
+          color="primary">
+          Anterior
+        </button>
+
+        <button
+          *ngIf="currentPageIndex < subcompetenciasKeys.length - 1"
+          style="width: 120px;"
+          (click)="goToNextPage()"
+          mat-raised-button
+          color="primary">
+          Siguiente
+        </button>
+
+        <button
+          *ngIf="currentPageIndex === subcompetenciasKeys.length - 1"
           style="width: 120px;"
           (click)="agregarEncuesta()"
           mat-raised-button
@@ -53,7 +73,7 @@
           Enviar
         </button>
       </div>
-
     </mat-card-footer>
   </mat-card>
 </app-menubar-docente>
+
